@@ -31,6 +31,8 @@ export default {
                 secondaryA: "#583748",
                 outlineColor: "#626262",
                 dark1: "#171717",
+                "dark1-h": "#202020",
+                "dark1-c": "#252525",
                 dark2: "#1E1E1E",
                 dark3: "#252525",
                 light1: "#EDEDED",
@@ -40,5 +42,5 @@ export default {
         },
     },
 
-    plugins: [forms],
+    // plugins: [forms({ strategy: "class" })],
 };
