@@ -50,7 +50,7 @@ export default function Landing() {
             <Container>
                 <h1 className="font-bold text-[36px]">FAQ</h1>
                 {faq.map(({ q, a }) => (
-                    <FaqBox question={q} answer={a} />
+                    <FaqBox question={q} answer={a} key={q} />
                 ))}
                 <div className="dark:bg-dark1 bg-light1 rounded-lg p-4 my-5">
                     <h3 className="font-medium text-2xl mb-2">
