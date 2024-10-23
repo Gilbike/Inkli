@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import '../../css/Footer.css'
 
 function Footer () {
 
     return (
-        <footer className="footer">
-        <div>
-        <a href='#' rel='external'>About us  </a><span className="dot"></span>
-        <a href='#' rel='external'> Privacy Policy </a><span className="dot"></span>
-        <a href='' className='inactiveLink'> ©2024 Inkli</a>
-        </div>
+      <footer className="footer">
+        <p>
+          <Link>About Us</Link> <span className="dot"></span> 
+          <Link>Privacy Policy</Link> <span className="dot"></span> 
+          ©2024 Inkli
+        </p>
 
       </footer>
     )
