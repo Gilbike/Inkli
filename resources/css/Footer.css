@@ -1,0 +1,22 @@
+.footer {
+    background-color: #171717;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .inactiveLink {
+    pointer-events: none;
+    cursor: default;
+ }
+
+ .footer .dot {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 3px;
+    margin-bottom: 3px;
+  }
