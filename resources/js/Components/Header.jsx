@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/react';
 
 function Header() {
     return (
-      <header className="fixed top-0 left-0 w-full bg-[#171717] text-white py-4 px-8 flex justify-between items-center z-50">
+      <header className="bg-[#171717] text-white py-4 px-8 flex justify-between items-center z-50">
         <Link to="/" className="text-2xl font-bold">Inkli</Link>
         <div className="flex items-center align-items:center">
           <input type="text" placeholder="Search" className="absolute bg-[#222222] text-white px-4 py-2 pr-40 rounded-md flex-1"/>
