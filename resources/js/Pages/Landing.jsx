@@ -1,6 +1,7 @@
 import Button from "@/Components/Button";
 import Container from "@/Components/Container";
 import FaqBox from "@/Components/FaqBox";
+import Layout from "@/Layouts/Layout";
 import React from "react";
 
 export default function Landing() {
@@ -28,7 +29,7 @@ export default function Landing() {
     ];
 
     return (
-        <>
+        <Layout>
             {/* Hero Section */}
             <div
                 className={`bg-[url('img/dark-bg.jpg')] w-100 h-[85vh] bg-cover bg-center flex flex-col justify-between items-center p-5`}
@@ -59,6 +60,6 @@ export default function Landing() {
                     <Button content="Get Started" />
                 </div>
             </Container>
-        </>
+        </Layout>
     );
 }
