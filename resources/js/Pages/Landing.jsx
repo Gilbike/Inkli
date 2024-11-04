@@ -2,6 +2,7 @@ import Button from "@/Components/Button";
 import Container from "@/Components/Container";
 import FaqBox from "@/Components/FaqBox";
 import Layout from "@/Layouts/Layout";
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 export default function Landing() {
@@ -43,7 +44,9 @@ export default function Landing() {
                         Be a part of the story!
                     </h2>
                 </div>
-                <Button content="Start using Inkli" big />
+                <Link href={route("register")}>
+                    <Button content="Start using Inkli" big />
+                </Link>
             </div>
             <h3 className="font-medium text-2xl m-5 text-center">
                 Scroll down to find out more
@@ -57,7 +60,9 @@ export default function Landing() {
                     <h3 className="font-medium text-2xl mb-2">
                         Interested? Join Now!
                     </h3>
-                    <Button content="Get Started" />
+                    <Link href={route("register")}>
+                        <Button content="Get Started" />
+                    </Link>
                 </div>
             </Container>
         </Layout>
