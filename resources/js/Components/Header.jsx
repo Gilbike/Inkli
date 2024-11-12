@@ -1,20 +1,44 @@
-import React from 'react';
-import { Link } from '@inertiajs/react';
+import React from "react";
+import { Link } from "@inertiajs/react";
+import { IoMdAdd, IoMdNotifications, IoMdSearch } from "react-icons/io";
+import Input from "./Input";
 
 function Header() {
     return (
-      <header className="bg-[#171717] text-white py-4 px-8 flex justify-between items-center z-50">
-        <Link to="/" className="text-2xl font-bold">Inkli</Link>
-        <div className="flex items-center align-items:center">
-          <input type="text" placeholder="Search" className="absolute bg-[#222222] text-white px-4 py-2 pr-40 rounded-md flex-1"/>
-        </div>
-        <div>
-          <Link to="/create" className="px-4 py-2 rounded-md bg-[#222222] hover:bg-gray-700 mr-2">Create+</Link>
-          <Link to="/notifications" className="px-4 py-2 rounded-md bg-[#222222] hover:bg-gray-700 mr-2">little bell(nem találtam)</Link>
-          <Link to="/profile" className="px-4 py-2 rounded-md bg-[#222222] hover:bg-gray-700">Name</Link>
-        </div>
-      </header>
+        <nav className="bg-dark1 p-3 flex justify-between items-center z-50 border-b border-b-outlineColor relative">
+            <Link
+                href="/"
+                className="text-2xl font-bold flex flex-row items-center w-10 gap-2"
+            >
+                <img src="img/logo-dark.png" alt="Inkli logo" />
+                Inkli
+            </Link>
+            <div className="absolute left-0 w-full h-full flex items-center justify-center pointer-events-none">
+                <Input svg={<IoMdSearch />} text="Search" />
+            </div>
+            <div className="flex flex-row gap-2">
+                <Link
+                    href="/create"
+                    className="flex flex-row gap-3 items-center p-2 rounded-md bg-dark2 hover:bg-dark2-h"
+                >
+                    Create
+                    <IoMdAdd size={24} />
+                </Link>
+                <Link
+                    href="/notifications"
+                    className="flex items-center p-2 rounded-md bg-dark2 hover:bg-dark2-h"
+                >
+                    <IoMdNotifications size={24} />
+                </Link>
+                <Link
+                    href="/profile"
+                    className="p-2 rounded-md bg-dark2 hover:bg-dark2-h"
+                >
+                    Name
+                </Link>
+            </div>
+        </nav>
     );
-  }  
+}
 
 export default Header;

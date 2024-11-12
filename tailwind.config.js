@@ -34,6 +34,7 @@ export default {
                 "dark1-h": "#202020",
                 "dark1-c": "#252525",
                 dark2: "#1E1E1E",
+                "dark2-h": "#272727",
                 dark3: "#252525",
                 light1: "#EDEDED",
                 light2: "#EDEDED",
