@@ -1,14 +1,18 @@
 import React from "react";
 
-export default function Input({ svg, text }) {
+export default function Input({ svg, ...props }) {
     return (
         <>
-            <div className="flex py-0.5 px-3 rounded-lg bg-dark2">
-                <span className="flex fill-outlineColor">{svg}</span>
+            <div className="flex py-0.5 px-2 rounded-lg bg-dark2">
+                <span className="p-1 flex items-center justify-center text-outlineColor">
+                    {svg}
+                </span>
                 <input
-                    type="email"
-                    placeholder={text}
-                    className="flex w-full border-none rounded-lg bg-transparent placeholder-outlineColor text-light1"
+                    {...props}
+                    className="p-1 outline-none flex w-full border-none rounded-lg bg-transparent
+                     placeholder-outlineColor text-light1 
+
+                     "
                 />
             </div>
         </>
