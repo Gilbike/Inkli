@@ -93,7 +93,8 @@ export default function Register() {
                     </div>
 
                     <div className="flex flex-col items-center gap-2">
-                        <Button className="w-full" content="Join Inkli" />
+                        <Button className="w-full">Join Inkli</Button>
+
                         <Link
                             href={route("login")}
                             className="font-light text-xs"
