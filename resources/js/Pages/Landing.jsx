@@ -45,7 +45,7 @@ export default function Landing() {
                     </h2>
                 </div>
                 <Link href={route("register")}>
-                    <Button content="Start using Inkli" big />
+                    <Button big>Start using Inkli</Button>
                 </Link>
             </div>
             <h3 className="font-medium text-2xl m-5 text-center">
@@ -61,7 +61,7 @@ export default function Landing() {
                         Interested? Join Now!
                     </h3>
                     <Link href={route("register")}>
-                        <Button content="Get Started" />
+                        <Button>Get Started</Button>
                     </Link>
                 </div>
             </Container>
