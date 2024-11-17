@@ -3,10 +3,7 @@ import { Link } from "@inertiajs/react";
 
 function Footer() {
     return (
-        <footer
-            className="bg-[#171717] text-white   
- py-4 text-center border-t border-gray-800"
-        >
+        <footer className="bg-dark1 text-white py-4 text-center border-t border-outlineColor">
             <p>
                 <Link href="/aboutus" className="hover:underline">
                     About Us
