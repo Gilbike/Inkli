@@ -28,7 +28,7 @@ export default function Register() {
             <div className="p-5">
                 <form
                     onSubmit={submit}
-                    className="w-full md:w-8/12 lg:w-5/12 bg-dark1 p-5 flex flex-col gap-10 m-auto rounded-lg"
+                    className="w-full md:w-8/12 lg:w-5/12 dark:bg-dark1 bg-light1 p-5 flex flex-col gap-10 m-auto rounded-lg"
                 >
                     <div className="flex flex-col gap-2">
                         <h3 className="font-bold text-4xl">Join Inkli</h3>

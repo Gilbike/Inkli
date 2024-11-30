@@ -5,6 +5,7 @@ import Layout from "@/Layouts/Layout";
 import { Link } from "@inertiajs/react";
 import React from "react";
 import DefaultCard from "@/Components/DefaultCard";
+import StoryCard from "@/Components/StoryCard";
 
 export default function Aboutus() {
     return (

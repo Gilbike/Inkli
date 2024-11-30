@@ -3,7 +3,7 @@ import React from "react";
 export default function Input({ svg, ...props }) {
     return (
         <>
-            <div className="flex py-0.5 px-2 rounded-lg bg-dark2">
+            <div className="flex py-0.5 px-2 rounded-lg dark:bg-dark2 bg-light2">
                 <span className="p-1 flex items-center justify-center text-outlineColor">
                     {svg}
                 </span>
