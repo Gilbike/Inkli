@@ -5,7 +5,7 @@ import Input from "./Input";
 
 function Header() {
     return (
-        <nav className="bg-dark1 p-3 flex justify-between items-center z-50 border-b border-b-outlineColor relative">
+        <nav className="dark:bg-dark1 bg-light1 p-3 flex justify-between items-center z-50 border-b border-b-outlineColor relative">
             <Link
                 href="/"
                 className="text-2xl font-bold flex flex-row items-center w-10 gap-2"
@@ -31,8 +31,8 @@ function Header() {
                     <IoMdNotifications size={24} />
                 </Link>
                 <Link
-                    href="/profile"
-                    className="p-2 rounded-md bg-dark2 hover:bg-dark2-h"
+                    href="/Profile"
+                    className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
                 >
                     Name
                 </Link>
