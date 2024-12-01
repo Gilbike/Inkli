@@ -39,6 +39,8 @@ export default {
                 light1: "#EDEDED",
                 light2: "#EDEDED",
                 light3: "#E6E6E6",
+                "light3-c": "#cccccc",
+                "light3-h": "#e3e3e3",
             },
         },
     },
