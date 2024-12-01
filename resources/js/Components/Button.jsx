@@ -13,7 +13,7 @@ export default function Button({
         <button
             onClick={click}
             {...props}
-            className={`bg-lightP dark:bg-darkP hover:bg-lightH dark:hover:bg-darkH active:bg-lightA dark:active:bg-darkA  ${size} rounded-lg ${className}`}
+            className={`bg-lightP text-white  dark:bg-darkP hover:bg-lightH dark:hover:bg-darkH active:bg-lightA dark:active:bg-darkA  ${size} rounded-lg ${className}`}
         >
             {children}
         </button>
