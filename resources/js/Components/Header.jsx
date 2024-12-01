@@ -13,8 +13,12 @@ function Header() {
                 <img src="img/logo-dark.png" alt="Inkli logo" />
                 Inkli
             </Link>
-            <div className="absolute left-0 w-full h-full flex items-center justify-center pointer-events-none">
-                <Input svg={<IoMdSearch />} text="Search" />
+            <div className="absolute left-0 w-full h-full flex items-center justify-center z-40 pointer-events-none">
+                <Input
+                    svg={<IoMdSearch />}
+                    placeholder="Search"
+                    className="w-4/12 pointer-events-auto"
+                />
             </div>
             <div className="flex flex-row gap-2">
                 <Link
