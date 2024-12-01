@@ -8,6 +8,7 @@ export default function Layout({ title = "Inkli", children }) {
             <Head title={title} />
             <Header />
             {children}
+            <div className="mb-auto"></div>
             <Footer />
         </>
     );
