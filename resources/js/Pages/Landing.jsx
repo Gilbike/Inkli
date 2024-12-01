@@ -33,14 +33,14 @@ export default function Landing() {
         <Layout>
             {/* Hero Section */}
             <div
-                className={`bg-[url('img/dark-bg.jpg')] w-100 h-[85vh] bg-cover bg-center flex flex-col justify-between items-center p-5`}
+                className={`dark:bg-[url('img/dark-bg.jpg')] bg-[url('img/light-bg.jpg')] w-100 h-[85vh] bg-cover bg-center flex flex-col justify-between items-center p-5`}
             >
                 <div></div>
                 <div>
-                    <h1 className="font-bold text-[36px] text-center leading-tight">
+                    <h1 className="text-light1 font-bold text-[36px] text-center leading-tight">
                         Inkli
                     </h1>
-                    <h2 className="font-[Playfair] text-[40px] text-center leading-tight">
+                    <h2 className="font-[Playfair] text-light1 text-[40px] text-center leading-tight">
                         Be a part of the story!
                     </h2>
                 </div>

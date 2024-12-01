@@ -23,11 +23,11 @@ export default function StoryCard({
         <div
             {...props}
             className={
-                "dark:bg-dark2 bg-light2 rounded-lg p-4 my-5 w-7/12 m-auto"
+                "dark:bg-dark2 bg-light1 rounded-lg p-4 my-5 w-7/12 m-auto"
             }
         >
             <div className="flex mb-2">
-                <StoryLabel done={true}></StoryLabel>
+                <StoryLabel done={completed}></StoryLabel>
                 <h3 className="font-medium text-2xl mb-0 ml-2">{title}</h3>
             </div>
             {genres.map((genre) => (
@@ -37,24 +37,28 @@ export default function StoryCard({
             <div className="flex flex-row flex-wrap space-x-4   p-0">
                 <MiscLabel className={"p-0"}>
                     <Button
-                        className={"h-full dark:bg-dark2-h bg-light3-c"}
+                        className={
+                            "h-full dark:bg-dark2-h bg-light3-c rounded-r-none"
+                        }
                         name="default-radio"
                     >
                         <BiSolidLike />
                     </Button>{" "}
                     <div className="p-2">{likes}</div>{" "}
                     <Button
-                        className={"h-full dark:bg-dark2-h bg-light3-c "}
+                        className={
+                            "h-full dark:bg-dark2-h bg-light3-c rounded-l-none"
+                        }
                         name="default-radio"
                     >
                         <BiSolidDislike />
                     </Button>
                 </MiscLabel>
                 <MiscLabel className={"px-3"}>
-                    {proposals.lenght}12 ‎ <PiListPlusFill />
+                    {proposals.length} ‎ <PiListPlusFill />
                 </MiscLabel>
                 <MiscLabel className={"px-3"}>
-                    {continues.lenght}134 ‎ <VscDebugContinue />
+                    {continues.length} ‎ <VscDebugContinue />
                 </MiscLabel>
 
                 <MiscLabel className={"px-3"}>
