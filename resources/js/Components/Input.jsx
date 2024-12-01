@@ -12,7 +12,7 @@ export default function Input({ svg, className, ...props }) {
                 <input
                     {...props}
                     className="p-1 outline-none flex w-full border-none rounded-lg bg-transparent
-                     placeholder-outlineColor text-light1"
+                     placeholder-outlineColor dark:text-light1 text-black"
                 />
             </div>
         </>
