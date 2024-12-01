@@ -18,10 +18,10 @@ export default function ProfileCard({ name, pfp, wrote, subm, acc }) {
                         </p>
                     </div>
                     <div className="flex flex-col w-28">
-                        <Button className={" mb-1 w-full"}>Follow</Button>
+                        <Button>Follow</Button>
                         <Button
                             className={
-                                " bg-secondaryP dark:bg-secondaryP w-full"
+                                " bg-secondaryP dark:bg-secondaryP dark:hover:bg-secondaryH hover:bg-secondaryH dark:active:bg-secondaryA active:bg-secondaryA w-full mt-1.5"
                             }
                         >
                             Block
