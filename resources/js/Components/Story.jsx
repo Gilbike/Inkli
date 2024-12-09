@@ -24,7 +24,7 @@ export default function Story({
                 </div>
                 <h2 className="font-medium text-2xl">{title}</h2>
             </div>
-            <p className="font-[Playfair]">{summary}</p>
+            <p className="font-[Playfair] line-clamp-2">{summary}</p>
             <div className="flex flex-row gap-2">
                 <div className="flex flex-row gap-2 bg-dark2 items-center">
                     <div className="p-2 bg-dark3 rounded">

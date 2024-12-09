@@ -9,10 +9,8 @@ Route::get('/', function () {
 });
 
 Route::inertia("/aboutus", "Aboutus");
-
 Route::inertia('/stories', "Stories/Index");
-
-require __DIR__ . '/auth.php';
-
 Route::inertia("/profile", "Profile");
+
 require __DIR__ . '/auth.php';
+

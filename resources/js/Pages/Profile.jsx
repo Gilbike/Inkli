@@ -8,6 +8,7 @@ import DefaultCard from "@/Components/DefaultCard";
 import StoryCard from "@/Components/StoryCard";
 import Badge from "@/Components/Badge";
 import ProfileCard from "@/Components/ProfileCard";
+import Story from "@/Components/Story";
 
 export default function Profile() {
     let badges = [
@@ -278,31 +279,29 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
             </DefaultCard>
             <Container>
                 <h1 className="font-bold text-[36px]">Stories</h1>
+                <div className="flex flex-col gap-2">
+                    {userStories.map(
+                        ({
+                            completed,
+                            title,
+                            text,
+                            genres,
+                            proposals,
+                            continues,
+                            likes,
+                        }) => (
+                            <Story
+                                title={title}
+                                completed={completed}
+                                summary={text}
+                                proposals={proposals.length}
+                                continues={continues.length}
+                                likeCount={likes}
+                            ></Story>
+                        )
+                    )}
+                </div>
             </Container>
-            {userStories.map(
-                ({
-                    completed,
-                    title,
-                    text,
-                    genres,
-                    proposals,
-                    continues,
-                    likes,
-                }) => (
-                    <StoryCard
-                        title={title}
-                        completed={completed}
-                        text={text}
-                        genres={genres}
-                        proposals={proposals}
-                        continues={continues}
-                        likes={likes}
-                    ></StoryCard>
-                )
-            )}
-
-            {/* </Container> */}
-            {/* A container azért kell, ha véknyabbat akarunk */}
         </Layout>
     );
 }
