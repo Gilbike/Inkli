@@ -40,7 +40,7 @@ function Header() {
                     <IoMdNotifications size={24} />
                 </Link>
                 <Link
-                    href="/Profile"
+                    href="/profile"
                     className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
                 >
                     Name

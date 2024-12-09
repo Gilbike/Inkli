@@ -258,7 +258,6 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
     ];
     return (
         <Layout>
-            {/* <Container> */}
             <ProfileCard
                 pfp={
                     "https://files.idyllic.app/files/static/244183?width=256&optimizer=image"
