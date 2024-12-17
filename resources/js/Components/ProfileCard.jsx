@@ -6,7 +6,11 @@ export default function ProfileCard({ name, pfp, wrote, subm, acc }) {
     return (
         <DefaultCard className="mt-2">
             <div className="flex">
-                <img className="rounded-lg w-36" src={pfp} alt={name} />
+                <img
+                    className="rounded-lg w-36 h-36"
+                    src={pfp ?? "/img/default-pfp.jpg"}
+                    alt={name}
+                />
                 <div className="flex justify-between w-full m-2 ml-7">
                     <div className="flex flex-col justify-between h-full">
                         <h1 className="block text-5xl font-bold">{name}</h1>

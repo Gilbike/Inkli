@@ -5,8 +5,11 @@ import DefaultCard from "@/Components/DefaultCard";
 import Badge from "@/Components/Badge";
 import ProfileCard from "@/Components/ProfileCard";
 import Story from "@/Components/Story";
+import { usePage } from "@inertiajs/react";
 
 export default function Profile() {
+    const userData = usePage().props.auth.user;
+
     let badges = [
         {
             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
@@ -256,13 +259,11 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
         <Layout>
             <Container>
                 <ProfileCard
-                    pfp={
-                        "https://files.idyllic.app/files/static/244183?width=256&optimizer=image"
-                    }
-                    name={"Tritya"}
-                    subm={"40"}
-                    acc={"532"}
-                    wrote={"ml34"}
+                    pfp={userData.profilepicture}
+                    name={userData.name}
+                    subm={0}
+                    acc={0}
+                    wrote={0}
                 />
                 <DefaultCard title={"Badges"} className="mt-2">
                     <div className="flex flex-wrap">

@@ -13,6 +13,7 @@ Route::inertia("/aboutus", "Aboutus");
 
 Route::middleware('auth')->group(function () {
   Route::inertia('/stories', "Stories/Index")->name('stories');
+
   Route::get("/profile", [ProfileController::class, 'show']);
 });
 
