@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export default function ProfileCard({ name, pfp, wrote, subm, acc }) {
     return (
-        <DefaultCard className="mt-0">
+        <DefaultCard className="mt-2">
             <div className="flex">
                 <img className="rounded-lg w-36" src={pfp} alt={name} />
                 <div className="flex justify-between w-full m-2 ml-7">
