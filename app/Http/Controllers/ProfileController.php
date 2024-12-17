@@ -11,7 +11,10 @@ class ProfileController extends Controller
      */
     public function show(Request $request)
     {
-        return inertia("Profile");
+        $user = auth()->user();
+        $stories = $user->stories()->get();
+
+        return inertia("Profile", ["stories" => $stories]);
     }
 
     /**
