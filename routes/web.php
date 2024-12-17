@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,7 +13,7 @@ Route::inertia("/aboutus", "Aboutus");
 
 Route::middleware('auth')->group(function () {
   Route::inertia('/stories', "Stories/Index")->name('stories');
-  Route::inertia("/profile", "Profile");
+  Route::get("/profile", [ProfileController::class, 'show']);
 });
 
 require __DIR__ . '/auth.php';
