@@ -46,9 +46,16 @@ function Header() {
                     </Link>
                     <Link
                         href="/profile"
-                        className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
+                        className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h flex flex-row gap-3"
                     >
                         {auth.user.name}
+                        <img
+                            className="rounded w-6 h-6"
+                            src={
+                                auth.user.profilepicture ??
+                                "/img/default-pfp.jpg"
+                            }
+                        />
                     </Link>
                 </div>
             ) : (
