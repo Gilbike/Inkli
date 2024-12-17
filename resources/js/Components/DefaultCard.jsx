@@ -1,14 +1,18 @@
 import React from "react";
 
-export default function DefaultCard({ title, children, className, ...props }) {
+export default function DefaultCard({
+    title,
+    children,
+    className,
+    background = 1,
+    ...props
+}) {
     return (
         <div
             {...props}
-            className={
-                "dark:bg-dark2 bg-light1 rounded-lg p-4 my-5 w-7/12 mx-auto"
-            }
+            className={`dark:bg-dark${background} bg-light1 rounded-lg p-4 w-full ${className}`}
         >
-            <h3 className="font-medium text-2xl mb-2">{title}</h3>
+            {title && <h3 className="font-medium text-2xl mb-2">{title}</h3>}
             {children}
         </div>
     );
