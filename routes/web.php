@@ -11,6 +11,8 @@ Route::get('/', function () {
 
 Route::inertia("/aboutus", "Aboutus");
 
+Route::inertia("/create", "Stories/Create");
+
 Route::middleware('auth')->group(function () {
   Route::inertia('/stories', "Stories/Index")->name('stories');
 
