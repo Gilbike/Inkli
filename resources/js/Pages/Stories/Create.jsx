@@ -1,5 +1,8 @@
+import DefaultCard from "@/Components/DefaultCard";
 import FilterRow from "@/Components/FilterRow";
+import MarkdownEditor from "@/Components/MarkdownEditor";
 import Sidebar from "@/Components/Sidebar";
+import Container from "@/Components/Container";
 import Story from "@/Components/Story";
 import Layout from "@/Layouts/Layout";
 import React from "react";
@@ -10,7 +13,9 @@ export default function Index() {
             <main className="flex-1 flex flex-row items-stretch">
                 <Sidebar />
 
-                <div className="w-2/12"></div>
+                <Container>
+                    <MarkdownEditor />
+                </Container>
             </main>
         </Layout>
     );
