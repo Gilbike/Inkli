@@ -13,12 +13,12 @@ export default function Story({
     proposals,
 }) {
     return (
-        <div className="p-4 rounded-lg bg-dark1 flex flex-col gap-2">
+        <div className="p-4 rounded-lg dark:bg-dark1 bg-light1 flex flex-col gap-2">
             <div className="flex flex-row gap-2 items-center">
                 <div
                     className={`${
                         completed ? "bg-lightP" : "bg-secondaryP"
-                    } px-2 py-1 text-xs rounded`}
+                    } px-2 py-1 text-xs rounded text-white`}
                 >
                     {completed ? "Completed" : "Incomplete"}
                 </div>
@@ -26,28 +26,28 @@ export default function Story({
             </div>
             <p className="font-[Playfair] line-clamp-2">{summary}</p>
             <div className="flex flex-row gap-2">
-                <div className="flex flex-row gap-2 bg-dark2 items-center">
-                    <div className="p-2 bg-dark3 rounded">
+                <div className="flex flex-row gap-2 dark:bg-dark2 bg-light2 items-center">
+                    <div className="p-2 dark:bg-dark3 bg-light3 rounded">
                         <IoMdThumbsUp className="w-4 h-4" />
                     </div>
 
                     <p className="text-xs">{likeCount}</p>
 
-                    <div className="p-2 bg-dark3 rounded">
+                    <div className="p-2 dark:bg-dark3 bg-light3 rounded">
                         <IoMdThumbsDown className="w-4 h-4" />
                     </div>
                 </div>
 
-                <div className="p-2 bg-dark2 rounded flex flex-row items-center gap-2">
+                <div className="p-2 dark:bg-dark2 bg-light2 rounded flex flex-row items-center gap-2">
                     <HiOutlineDocumentPlus className="w-4 h-4" />
                     <p className="text-xs">{proposals}</p>
                 </div>
 
-                <div className="p-2 bg-dark2 rounded flex flex-row items-center gap-2">
+                <div className="p-2 dark:bg-dark2 bg-light2 rounded flex flex-row items-center gap-2">
                     <VscDebugContinue className="w-4 h-4" />
                     <p className="text-xs">{continues}</p>
                 </div>
-                <div className="p-2 bg-dark2 rounded flex flex-row items-center gap-2 px-3">
+                <div className="p-2 dark:bg-dark2 bg-light2 rounded flex flex-row items-center gap-2 px-3">
                     <p className="text-xs">Share</p>
                     <FaExternalLinkAlt className="w-4 h-4" />
                 </div>

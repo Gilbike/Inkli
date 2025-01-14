@@ -10,7 +10,8 @@ export default {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.jsx",
     ],
-    // darkMode: "selector",
+    // ⬐ ezt kell kikommentelni ha akarol darkmode-ot
+    darkMode: "selector",
     theme: {
         extend: {
             fontFamily: {
