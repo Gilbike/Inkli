@@ -26,11 +26,17 @@ function Header({ onDarkModeClick }) {
 
             {auth.user && (
                 <div className="absolute left-0 w-full h-full flex items-center justify-center z-40 pointer-events-none">
-                    <Input
-                        svg={<IoMdSearch />}
-                        placeholder="Search"
-                        className="w-4/12 pointer-events-auto bg-light3-h "
-                    />
+                    <form
+                        className="w-4/12 pointer-events-auto"
+                        action="/search"
+                        method="GET"
+                    >
+                        <Input
+                            name="q"
+                            svg={<IoMdSearch />}
+                            placeholder="Search"
+                        />
+                    </form>
                 </div>
             )}
 

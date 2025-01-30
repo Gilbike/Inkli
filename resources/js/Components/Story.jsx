@@ -22,7 +22,7 @@ export default function Story({
                 >
                     {completed ? "Completed" : "Incomplete"}
                 </div>
-                <h2 className="font-medium text-2xl">{title}</h2>
+                <h2 className="font-medium text-2xl line-clamp-1">{title}</h2>
             </div>
             <p className="font-[Playfair] line-clamp-2">{summary}</p>
             <div className="flex flex-row gap-2">
