@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import { IoMdAdd, IoMdNotifications, IoMdSearch } from "react-icons/io";
+import { IoInvertMode } from "react-icons/io5";
 import Input from "./Input";
 
-function Header() {
+function Header({ onDarkModeClick }) {
     const { auth } = usePage().props;
     // auth.user = null;
     return (
@@ -46,6 +47,12 @@ function Header() {
                     >
                         <IoMdNotifications size={24} />
                     </Link>
+                    <button
+                        className="flex items-center py-2 px-3 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
+                        onClick={onDarkModeClick}
+                    >
+                        <IoInvertMode />
+                    </button>
                     <Link
                         href="/profile"
                         className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h flex flex-row gap-3"
