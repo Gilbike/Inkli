@@ -20,14 +20,16 @@ function Header() {
                 Inkli
             </Link>
 
-            <div className="absolute left-0 w-full h-full flex items-center justify-center z-40 pointer-events-none">
-                <Input
-                    cl
-                    svg={<IoMdSearch />}
-                    placeholder="Search"
-                    className="w-4/12 pointer-events-auto bg-light3-h "
-                />
-            </div>
+            {auth.user && (
+                <div className="absolute left-0 w-full h-full flex items-center justify-center z-40 pointer-events-none">
+                    <Input
+                        cl
+                        svg={<IoMdSearch />}
+                        placeholder="Search"
+                        className="w-4/12 pointer-events-auto bg-light3-h "
+                    />
+                </div>
+            )}
 
             {auth.user ? (
                 <div className="flex flex-row gap-2">
