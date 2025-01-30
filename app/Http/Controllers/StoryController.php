@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Story;
 use Illuminate\Http\Request;
 
 class StoryController extends Controller
@@ -15,21 +16,35 @@ class StoryController extends Controller
   }
 
   /**
-   * Show the form for creating a new resource.
+   * Show the form for creating a mew resource.
    */
   public function create()
   {
-    //
+    return inertia("Stories/Create");
   }
 
   /**
-   * Store a newly created resource in storage.
+   * Store a mewly created resource in storage.
    */
   public function store(Request $request)
   {
-    // :!%::!:y
-  }
+    // Adatok validálása
+    $validatedData = $request->validate([
+      'title'   => 'required|string|min:3|unique:stories,title',
+      'content' => 'required|string|min:200',
+    ]);
 
+    // Új történet létrehozása
+    $story                 = new Story();
+    $story->title          = $validatedData['title'];
+    $story->slug           = \Str::slug($validatedData['title']);
+    $story->content        = $validatedData['content'];
+    $story->author_id      = auth()->id();
+    $story->continue_after = now();
+    $story->save();
+
+    return response()->json(['message' => 'Történet sikeresen létrehozva'], 201);
+  }
   /**
    * Display the specified resource.
    */
