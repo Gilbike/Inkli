@@ -40,7 +40,7 @@ class StoryController extends Controller
     $story->title = $validatedData['title'];
     $story->slug = \Str::slug($validatedData['title']);
     $story->content = $validatedData['content'];
-    $story->author_id = auth()->id();
+    $story->author = auth()->id();
     $story->continue_after = now();
     $story->save();
 
