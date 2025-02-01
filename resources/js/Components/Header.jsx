@@ -18,7 +18,7 @@ function Header({ onDarkModeClick }) {
             >
                 <img
                     className="dark:invert"
-                    src="img/logo-dark.png"
+                    src="/img/logo-dark.png"
                     alt="Inkli logo"
                 />
                 Inkli
@@ -43,7 +43,7 @@ function Header({ onDarkModeClick }) {
             {auth.user ? (
                 <div className="flex flex-row gap-2">
                     <Link
-                        href="/create"
+                        href="/stories/create"
                         className="flex flex-row gap-3 items-center p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
                     >
                         Create
