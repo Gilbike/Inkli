@@ -12,7 +12,8 @@ class StoryController extends Controller
    */
   public function index()
   {
-    //
+    $stories = Story::all();
+    return inertia('Stories/Index', ['stories' => $stories]);
   }
 
   /**
@@ -30,16 +31,16 @@ class StoryController extends Controller
   {
     // Adatok validálása
     $validatedData = $request->validate([
-      'title'   => 'required|string|min:3|unique:stories,title',
+      'title' => 'required|string|min:3|unique:stories,title',
       'content' => 'required|string|min:200',
     ]);
 
     // Új történet létrehozása
-    $story                 = new Story();
-    $story->title          = $validatedData['title'];
-    $story->slug           = \Str::slug($validatedData['title']);
-    $story->content        = $validatedData['content'];
-    $story->author_id      = auth()->id();
+    $story = new Story();
+    $story->title = $validatedData['title'];
+    $story->slug = \Str::slug($validatedData['title']);
+    $story->content = $validatedData['content'];
+    $story->author_id = auth()->id();
     $story->continue_after = now();
     $story->save();
 
