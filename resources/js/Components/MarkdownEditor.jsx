@@ -10,6 +10,7 @@ export default function MarkdownEditor() {
     const [title, setTitle] = useState("");
     const [markdownText, setMarkdownText] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [genres, setGenres] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -53,6 +54,13 @@ export default function MarkdownEditor() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (markdownText.length < 200) {
+            setErrorMessage("The story must be at least 200 characters long.");
+            return;
+        }
+
+        setErrorMessage("");
         post(route("stories.store"), {
             onSuccess: () => {
                 setSuccessMessage("A történet sikeresen létrehozva!");
@@ -70,6 +78,11 @@ export default function MarkdownEditor() {
                 {successMessage && (
                     <div className="bg-green-100 text-green-800 p-3 rounded mb-4">
                         {successMessage}
+                    </div>
+                )}
+                {errorMessage && (
+                    <div className="bg-red-100 text-red-800 p-3 rounded mb-4">
+                        {errorMessage}
                     </div>
                 )}
                 <FormInput
@@ -119,6 +132,9 @@ export default function MarkdownEditor() {
                     placeholder="Write your story in Markdown..."
                     required
                 />
+                <div className="text-sm text-gray-500 mt-1 mx-3">
+                    {markdownText.length}/200 characters (minimum)
+                </div>
                 {markdownText.length > 0 && (
                     <div>
                         <h3 className="font-bold text-xl m-3">

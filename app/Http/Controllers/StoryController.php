@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Story;
 use Illuminate\Http\Request;
 
@@ -30,21 +31,15 @@ class StoryController extends Controller
   public function store(Request $request)
   {
     // Adatok validálása
-    $validatedData = $request->validate([
-      'title' => 'required|string|min:3|unique:stories,title',
-      'content' => 'required|string|min:200',
+    $validatedData                   = $request->validate([
+      'title'   => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
+      'content' => 'required|string|min:200', // Minimum 200 karakter
     ]);
-
-    // Új történet létrehozása
-    $story = new Story();
-    $story->title = $validatedData['title'];
-    $story->slug = \Str::slug($validatedData['title']);
-    $story->content = $validatedData['content'];
-    $story->author = auth()->id();
-    $story->continue_after = now();
-    $story->save();
-
-    return response()->json(['message' => 'Történet sikeresen létrehozva'], 201);
+    $validatedData['author']         = auth()->id(); // Bejelentkezett felhasználó azonosítója
+    $validatedData['slug']           = Str::slug($validatedData['title']); // Slug létrehozása
+    $validatedData['continue_after'] = date("Y-m-d"); // 00:00:00 // 00:00:00 // 00:00:00 // 00:00:00
+    Story::create($validatedData); // Történet létrehozása
+    return redirect()->back()->with(['message' => 'Történet sikeresen létrehozva']);
   }
   /**
    * Display the specified resource.
