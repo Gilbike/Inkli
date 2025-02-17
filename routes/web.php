@@ -13,10 +13,7 @@ Route::get('/', function () {
 
 Route::inertia("/aboutus", "Aboutus");
 Route::middleware('auth')->group(function () {
-
   Route::resource('/stories', StoryController::class);
-
-
 
   Route::get("/profile", [ProfileController::class, 'show']);
   Route::get("/search", [SearchController::class, 'search']);
