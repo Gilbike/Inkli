@@ -10,12 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('proposed_additions', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
-            $table->integer('likes')->default(0);
-            $table->foreignId('author')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('story')->constrained('stories')->cascadeOnDelete();
+            $table->foreignId('user_id');
+            $table->foreignId('story_id');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('proposed_additions');
+        Schema::dropIfExists('likes');
     }
 };

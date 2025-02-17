@@ -14,6 +14,6 @@ class Story extends Model
   {
     return $this->belongsTo(User::class, "author");
   }
-  protected $fillable = ['title', 'content', 'author', 'slug', 'continue_after'];
+  protected $fillable = ['title', 'content', 'author', 'slug'];
 }
 

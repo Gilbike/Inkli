@@ -31,13 +31,12 @@ class StoryController extends Controller
   public function store(Request $request)
   {
     // Adatok validálása
-    $validatedData                   = $request->validate([
-      'title'   => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
+    $validatedData = $request->validate([
+      'title' => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
       'content' => 'required|string|min:200', // Minimum 200 karakter
     ]);
-    $validatedData['author']         = auth()->id(); // Bejelentkezett felhasználó azonosítója
-    $validatedData['slug']           = Str::slug($validatedData['title']); // Slug létrehozása
-    $validatedData['continue_after'] = date("Y-m-d"); // 00:00:00 // 00:00:00 // 00:00:00 // 00:00:00
+    $validatedData['author'] = auth()->id(); // Bejelentkezett felhasználó azonosítója
+    $validatedData['slug'] = Str::slug($validatedData['title']); // Slug létrehozása
     Story::create($validatedData); // Történet létrehozása
     return redirect()->back()->with(['message' => 'Történet sikeresen létrehozva']);
   }

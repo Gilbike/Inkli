@@ -22,7 +22,6 @@ class StoryFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => fake()->paragraph(),
-            'continue_after' => fake()->date(),
             'highlighted' => fake()->boolean(7)
         ];
     }

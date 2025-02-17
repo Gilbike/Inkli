@@ -15,11 +15,8 @@ return new class extends Migration {
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('content');
-            $table->tinyInteger('max_continues')->default(10);
-            $table->dateTimeTz('continue_after');
             $table->boolean('highlighted')->default(false);
             $table->foreignId('author')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('continue')->nullable()->constrained('additions')->cascadeOnDelete();
             $table->timestamps();
         });
     }
