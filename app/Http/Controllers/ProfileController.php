@@ -40,4 +40,12 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function stories()
+    {
+        $user = auth()->user();
+        $stories = $user->stories()->get();
+
+        return inertia("Stories/MyStories", ["stories" => $stories]);
+    }
 }

@@ -71,10 +71,7 @@ export default function Profile({ stories }) {
                     {stories.map((story) => (
                         <Story
                             title={story.title}
-                            completed={false} // TODO: Add to database
                             summary={story.content}
-                            proposals={0} // TODO: Add model
-                            continues={0} // TODO: Add model
                             likeCount={0} // TODO: Add to database
                         ></Story>
                     ))}

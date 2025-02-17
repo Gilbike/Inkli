@@ -17,9 +17,6 @@ export default function Search({ users, stories }) {
                         {stories.map((story) => (
                             <Story
                                 title={story.title}
-                                completed={false}
-                                continues={0}
-                                proposals={0}
                                 likeCount={0}
                                 summary={story.content}
                                 key={story.id}

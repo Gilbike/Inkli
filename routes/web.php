@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::inertia("/aboutus", "Aboutus");
 Route::middleware('auth')->group(function () {
   Route::resource('stories', StoryController::class);
+  Route::get("/my-stories", [ProfileController::class, 'stories'])->name('user-stories');
 
   Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
   Route::get("/search", [SearchController::class, 'search'])->name('search');
