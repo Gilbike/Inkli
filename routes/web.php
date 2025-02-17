@@ -9,14 +9,14 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
   return Inertia::render('Landing');
-});
+})->name('landing');
 
 Route::inertia("/aboutus", "Aboutus");
 Route::middleware('auth')->group(function () {
-  Route::resource('/stories', StoryController::class);
+  Route::resource('stories', StoryController::class);
 
-  Route::get("/profile", [ProfileController::class, 'show']);
-  Route::get("/search", [SearchController::class, 'search']);
+  Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
+  Route::get("/search", [SearchController::class, 'search'])->name('search');
 });
 
 require __DIR__ . '/auth.php';
