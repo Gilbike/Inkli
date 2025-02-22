@@ -2,9 +2,12 @@ import React from "react";
 import { IoMdThumbsUp, IoMdThumbsDown } from "react-icons/io";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-export default function Story({ title, summary, likeCount }) {
+export default function Story({ id, title, summary, likeCount }) {
     return (
-        <div className="p-4 rounded-lg dark:bg-dark1 bg-light1 flex flex-col gap-2">
+        <a
+            href={route("stories.show", { story: id })}
+            className="p-4 rounded-lg dark:bg-dark1 bg-light1 flex flex-col gap-2"
+        >
             <h2 className="font-medium text-2xl line-clamp-1">{title}</h2>
             <p className="font-[Playfair] line-clamp-2">{summary}</p>
             <div className="flex flex-row gap-2">
@@ -25,6 +28,6 @@ export default function Story({ title, summary, likeCount }) {
                     <FaExternalLinkAlt className="w-4 h-4" />
                 </div>
             </div>
-        </div>
+        </a>
     );
 }

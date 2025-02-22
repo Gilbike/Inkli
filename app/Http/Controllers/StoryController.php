@@ -43,9 +43,9 @@ class StoryController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show(Story $story)
   {
-    //
+    return inertia('Stories/Show', ['story' => $story]);
   }
 
   /**
