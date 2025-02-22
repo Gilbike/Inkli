@@ -8,30 +8,29 @@ import React from "react";
 export default function Landing() {
     const faq = [
         {
-            q: "What is the main purpose of the website?",
-            a: "The main purpose of the website is to allow users to create and collaborate on stories. Users can write continuations of existing stories, vote on their favorite continuations, and help shape the narrative together.",
+            q: "What is Inkli?",
+            a: "Inkli is a platform that combines social engagement with storytelling. Users can write and publish stories, follow their favorite writers, vote on stories",
         },
         {
-            q: "How does the voting process work?",
-            a: "Once enough continuations are submitted for a story, users can vote on which one they prefer. The continuation with the most votes becomes part of the official story, and the process restarts for further contributions.",
+            q: "How can I find stories I’ll enjoy?",
+            a: "You can explore stories by genre, search for specific keywords, or browse trending and top-rated stories based on community votes. You can also follow your favorite writers to get notified when they publish new content.",
         },
         {
-            q: "Can anyone participate in creating stories?",
+            q: "Can I upvote or downvote stories?",
             a: "Yes, everyone is welcome to participate! Whether you're a seasoned writer or just starting, you can join in by adding your own continuations or voting on others’ ideas.",
         },
         {
-            q: "What happens if multiple users submit similar continuations?",
-            a: "Before publishing your continuation, always check to see if there are already similar submissions. If you find a continuation that closely matches yours, it's best to vote for that one instead of posting a duplicate. ",
+            q: "How do I follow a writer or genre?",
+            a: "Simply click the Follow button on a writer’s profile or on a genre page to receive updates on new stories and discussions.",
         },
         {
-            q: "Is there a limit to how many stories I can contribute to?",
-            a: "There’s no limit to the number of stories you can contribute to! Feel free to explore various narratives and add your creative touch to as many stories as you like.",
+            q: "Is there a mobile app?",
+            a: "You can access Inkli through your browser on any device.",
         },
     ];
 
     return (
         <Layout>
-            {/* Hero Section */}
             <div
                 className={`dark:bg-[url('img/dark-bg.jpg')] bg-[url('img/light-bg.jpg')] w-100 h-[85vh] bg-cover bg-center flex flex-col justify-between items-center p-5`}
             >
@@ -41,7 +40,7 @@ export default function Landing() {
                         Inkli
                     </h1>
                     <h2 className="font-[Playfair] text-light1 text-[40px] text-center leading-tight">
-                        Be a part of the story!
+                        Write. Read. Connect. Inspire.
                     </h2>
                 </div>
                 <Link href={route("register")}>

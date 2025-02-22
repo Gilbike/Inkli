@@ -33,12 +33,13 @@ export default function Register() {
                     <div className="flex flex-col gap-2">
                         <h3 className="font-bold text-4xl">Join Inkli</h3>
                         <p className="font-[Playfair] text-base/6">
-                            Join Inkli today and dive into a vibrant community
-                            where your imagination sets the rules, and your
-                            ideas can shape and evolve the stories you love.
-                            Unleash your creativity, connect with fellow
-                            writers, and become part of an amazing community.
-                            Let’s create together on Inkli!
+                            Join Inkli today and become part of a dynamic
+                            storytelling community where your creativity drives
+                            the conversation. Write compelling stories, explore
+                            new genres, and engage with readers through upvotes.
+                            Connect with fellow writers, shape the stories you
+                            love, and be part of something bigger. Let’s create
+                            and share together!
                         </p>
                     </div>
 
