@@ -7,47 +7,8 @@ import ProfileCard from "@/Components/ProfileCard";
 import Story from "@/Components/Story";
 import { usePage } from "@inertiajs/react";
 
-export default function Profile({ stories }) {
-    const userData = usePage().props.auth.user;
-
-    let badges = [
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "fortnite",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "novice writer",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "novice writer",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-        {
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0yfKRUDbgrZ3QWUbdinxg9VJFnIWNLoZcoA&s",
-            name: "battle royale",
-        },
-    ];
+export default function Profile({ user, stories }) {
+    const userData = user || usePage().props.auth.user;
 
     return (
         <Layout>
@@ -59,17 +20,18 @@ export default function Profile({ stories }) {
                     acc={0}
                     wrote={stories.length}
                 />
-                <DefaultCard title={"Badges"} className="mt-2">
+                {/* <DefaultCard title={"Badges"} className="mt-2">
                     <div className="flex flex-wrap">
                         {badges.map(({ img, name }) => (
                             <Badge title={name} img={img}></Badge>
                         ))}
                     </div>
-                </DefaultCard>
+                </DefaultCard> */}
                 <h1 className="font-bold text-[36px]">Stories</h1>
                 <div className="flex flex-col gap-2 mb-3">
                     {stories.map((story) => (
                         <Story
+                            id={story.id}
                             title={story.title}
                             summary={story.content}
                             likeCount={0} // TODO: Add to database
