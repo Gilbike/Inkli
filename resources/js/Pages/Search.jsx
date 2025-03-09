@@ -16,6 +16,7 @@ export default function Search({ users, stories }) {
                     <div className="flex flex-col gap-2">
                         {stories.map((story) => (
                             <Story
+                                id={story.id}
                                 title={story.title}
                                 likeCount={0}
                                 summary={story.content}
