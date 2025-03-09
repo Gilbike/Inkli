@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -47,5 +48,12 @@ class ProfileController extends Controller
         $stories = $user->stories()->get();
 
         return inertia("Stories/MyStories", ["stories" => $stories]);
+    }
+
+    public function other(User $user)
+    {
+        $stories = $user->stories()->get();
+
+        return inertia("Profile", ["user" => $user, "stories" => $stories]);
     }
 }

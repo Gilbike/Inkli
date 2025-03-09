@@ -30,7 +30,7 @@ export default function Search({ users, stories }) {
                     <div>
                         {users.map((user) => (
                             <Link
-                                href={"/profile/" + user.id}
+                                href={"/user/" + user.id}
                                 key={user.id}
                                 className="mb-2 rounded bg-light1 dark:bg-dark1 p-2 flex flex-row gap-2 items-center"
                             >
