@@ -10,19 +10,20 @@ use Illuminate\Support\Str;
  */
 class StoryFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        $title = fake()->sentence();
-        return [
-            'title' => $title,
-            'slug' => Str::slug($title),
-            'content' => fake()->paragraph(),
-            'highlighted' => fake()->boolean(7)
-        ];
-    }
+  /**
+   * Define the model's default state.
+   *
+   * @return array<string, mixed>
+   */
+  public function definition(): array
+  {
+    $title = fake()->sentence();
+    return [
+      'title'       => $title,
+      'slug'        => Str::slug($title),
+      'content'     => fake()->paragraph(),
+      'highlighted' => fake()->boolean(7),
+      'likeCount'   => fake()->numberBetween(0, 100)
+    ];
+  }
 }
