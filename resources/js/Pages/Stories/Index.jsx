@@ -16,9 +16,7 @@ export default function Index({ stories }) {
                             id={story.id}
                             title={story.title}
                             summary={story.content}
-                            likeCount={0}
-                            proposals={0}
-                            continues={0}
+                            likeCount={story.likeCount}
                         />
                     ))}
                 </div>

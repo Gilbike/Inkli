@@ -34,7 +34,7 @@ export default function Profile({ user, stories }) {
                             id={story.id}
                             title={story.title}
                             summary={story.content}
-                            likeCount={0} // TODO: Add to database
+                            likeCount={story.likeCount + 2} // TODO: Add to database
                         ></Story>
                     ))}
                 </div>

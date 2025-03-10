@@ -63,7 +63,7 @@ export default function MarkdownEditor() {
         setErrorMessage("");
         post(route("stories.store"), {
             onSuccess: () => {
-                setSuccessMessage("A történet sikeresen létrehozva!");
+                setSuccessMessage("Story posted successfully!");
                 reset();
                 setTitle("");
                 setMarkdownText("");
