@@ -11,9 +11,20 @@ class StoryController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    $stories = Story::all();
+    $sort = $request->get('sort', 'newest');
+    switch ($sort) {
+      case 'abc':
+        $stories = Story::orderBy('title')->get();
+        break;
+      case 'like':
+        $stories = Story::orderByDesc('likeCount')->get();
+        break;
+      default:
+        $stories = Story::orderByDesc('created_at')->get();
+        break;
+    }
     return inertia('Stories/Index', ['stories' => $stories]);
   }
 
