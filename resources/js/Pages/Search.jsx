@@ -18,7 +18,7 @@ export default function Search({ users, stories }) {
                             <Story
                                 id={story.id}
                                 title={story.title}
-                                likeCount={0}
+                                likeCount={story.likeCount}
                                 summary={story.content}
                                 key={story.id}
                             />
