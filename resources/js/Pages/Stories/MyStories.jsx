@@ -11,6 +11,7 @@ export default function MyStories({ stories }) {
                 <div className="flex flex-col gap-2 mb-3">
                     {stories.map((story) => (
                         <Story
+                            id={story.id}
                             title={story.title}
                             summary={story.content}
                             likeCount={0} // TODO: Add to database
