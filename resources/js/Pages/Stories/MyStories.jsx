@@ -14,7 +14,7 @@ export default function MyStories({ stories }) {
                             id={story.id}
                             title={story.title}
                             summary={story.content}
-                            likeCount={0} // TODO: Add to database
+                            likeCount={story.likeCount}
                         ></Story>
                     ))}
                 </div>
