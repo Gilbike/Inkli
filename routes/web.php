@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoryController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,8 +17,12 @@ Route::middleware('auth')->group(function () {
   Route::resource('stories', StoryController::class);
   Route::get("/my-stories", [ProfileController::class, 'stories'])->name('user-stories');
 
+  Route::resource('likes', LikeController::class);
+
+
   Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
   Route::get("/search", [SearchController::class, 'search'])->name('search');
+
 
   Route::get("/user/{user}", [ProfileController::class, 'other'])->name('user');
 });
