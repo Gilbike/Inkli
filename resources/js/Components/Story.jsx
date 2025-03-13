@@ -10,6 +10,14 @@ export default function Story({ id, title, summary, likeCount }) {
         setShared(true);
     };
 
+    function handleLike(like) {
+        if (like) {
+            console.log("Liked");
+        } else {
+            console.log("Disliked");
+        }
+    }
+
     useEffect(() => {
         let timer;
         if (shared) {
@@ -29,25 +37,19 @@ export default function Story({ id, title, summary, likeCount }) {
             </a>
             <div className="flex flex-row gap-2">
                 <div className="flex flex-row gap-2 dark:bg-dark2 bg-light2 items-center">
-                    <label className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center">
-                        <input
-                            type="radio"
-                            name="vote"
-                            value="up"
-                            className="hidden"
-                        />
+                    <button
+                        onClick={() => handleLike(true)}
+                        className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center"
+                    >
                         <IoMdThumbsUp className="w-4 h-4" />
-                    </label>
+                    </button>
                     <p className="text-xs">{likeCount}</p>
-                    <label className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center">
-                        <input
-                            type="radio"
-                            name="vote"
-                            value="down"
-                            className="hidden"
-                        />
+                    <button
+                        onClick={() => handleLike(false)}
+                        className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center"
+                    >
                         <IoMdThumbsDown className="w-4 h-4" />
-                    </label>
+                    </button>
                 </div>
 
                 <button
@@ -59,7 +61,7 @@ export default function Story({ id, title, summary, likeCount }) {
                 </button>
 
                 {shared && (
-                    <div className="rounded text-xs bg-lightH/40 flex items-center px-2 text-neutral-300">
+                    <div className="rounded text-xs bg-lightH/40 flex items-center px-2 dark:bg-darkH text-stone-900 dark:text-neutral-300">
                         Link copied to clipboard
                     </div>
                 )}
