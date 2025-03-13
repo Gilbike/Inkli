@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Like;
 use function PHPUnit\Framework\returnArgument;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -39,6 +40,13 @@ class LikeController extends Controller
     return redirect()->back()->with(['message' => 'Liked successfully']);
   }
 
+  public function getLike($id)
+  {
+    $userId = Auth::id();
+    $like   = Like::where('user_id', $userId)->where('story_id', $id)->first();
+
+    return response()->json(['like' => $like]);
+  }
   /**
    * Display the specified resource.
    */
