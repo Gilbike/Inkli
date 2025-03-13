@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Mockery\Undefined;
 
 return new class extends Migration {
   /**
@@ -14,6 +15,7 @@ return new class extends Migration {
       $table->id();
       $table->foreignId('user_id');
       $table->foreignId('story_id');
+      $table->boolean('is_liked');
       $table->timestamps();
     });
   }
