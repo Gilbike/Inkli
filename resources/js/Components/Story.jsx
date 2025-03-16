@@ -4,7 +4,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function Story({ id, title, summary, likeCount }) {
     const [shared, setShared] = useState(false);
-    const [rated, setRated] = useState(false);
+    const [rated, setRated] = useState(null);
     const [currentLikeCount, setCurrentLikeCount] = useState(likeCount);
 
     const shareStory = () => {
@@ -12,6 +12,18 @@ export default function Story({ id, title, summary, likeCount }) {
         setShared(true);
     };
 
+    // A like/dislike állapotának lekérdezése.
+    useEffect(() => {
+        fetch(route("likes.getLike", { id }))
+            .then((response) => response.json())
+            .then((data) => {
+                setRated(data.like.is_liked === 1);
+                console.log(data);
+            })
+            .catch((error) => console.error(error));
+    }, []);
+
+    // A like/dislike beküldése a controllernek.
     function handleLike(like) {
         if (rated) return;
         const csrfToken = document
@@ -43,6 +55,7 @@ export default function Story({ id, title, summary, likeCount }) {
             .catch((error) => console.error(error));
     }
 
+    //  figyeljük a shared változó változását,.
     useEffect(() => {
         let timer;
         if (shared) {
@@ -60,23 +73,40 @@ export default function Story({ id, title, summary, likeCount }) {
                 <p className="font-[Playfair] line-clamp-2">{summary}</p>
             </a>
             <div className="flex flex-row gap-2">
-                <div className="flex flex-row gap-2 dark:bg-dark2 bg-light2 items-center">
+                <div
+                    className={`flex flex-row gap-2 dark:bg-dark2 bg-light2 items-center`}
+                >
                     <button
-                        disabled={rated}
+                        disabled={rated !== null}
                         onClick={() => handleLike(true)}
-                        className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center"
+                        className={`p-2 ${
+                            rated !== false && rated !== null
+                                ? " bg-lightP text-light3"
+                                : "dark:bg-dark3 bg-light3"
+                        } rounded flex items-center `}
                     >
                         <IoMdThumbsUp className="w-4 h-4" />
                     </button>
-                    <p className="text-xs">{currentLikeCount}</p>
+                    <p
+                        className={`text-xs ${
+                            rated !== null ? "font-bold" : ""
+                        } `}
+                    >
+                        {currentLikeCount}
+                    </p>
                     <button
-                        disabled={rated}
+                        disabled={rated !== null}
                         onClick={() => handleLike(false)}
-                        className="p-2 dark:bg-dark3 bg-light3 rounded flex items-center"
+                        className={`p-2 ${
+                            rated !== true && rated !== null
+                                ? "bg-darkP  text-light3"
+                                : "dark:bg-dark3 bg-light3"
+                        } rounded flex items-center`}
                     >
                         <IoMdThumbsDown className="w-4 h-4" />
                     </button>
                 </div>
+
                 <button
                     onClick={shareStory}
                     className="p-2 dark:bg-dark2 bg-light2 rounded flex flex-row items-center gap-2 px-3"
