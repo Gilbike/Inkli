@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
 
+
+  Route::post('/stories/{id}/like', [LikeController::class, 'store'])->name('likes.store');
+  Route::get('/stories/{id}/like', [LikeController::class, 'getLike'])->name('likes.getLike');
+
   Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
   Route::get("/search", [SearchController::class, 'search'])->name('search');
 
