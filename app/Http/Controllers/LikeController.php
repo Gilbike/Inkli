@@ -13,9 +13,10 @@ class LikeController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    $likes = Like::all();
+
+    $likes = $request->get('sort', 'newest');
     return inertia('Likes/Index', ['likes' => $likes]);
   }
 
@@ -35,6 +36,7 @@ class LikeController extends Controller
     $validatedData = $request->validate([
       'user_id'  => 'required|exists:users,id',
       'story_id' => 'required|exists:stories,id',
+      'is_liked' => 'required|boolean',
     ]);
     Like::create($validatedData);
     return redirect()->back()->with(['message' => 'Liked successfully']);
