@@ -51,7 +51,7 @@ class StoryController extends Controller
       Like::create([
         'story_id' => $story->id,
         'user_id'  => $user->id,
-        // 'is_liked' => true,
+        'is_liked' => true,
       ]);
     });
     return redirect()->back()->with('success', 'Story liked!');
@@ -69,7 +69,7 @@ class StoryController extends Controller
       Like::create([
         'story_id' => $story->id,
         'user_id'  => $user->id,
-        // 'is_liked' => false,
+        'is_liked' => false,
       ]);
     });
     return redirect()->back()->with('success', 'story disliked!');
