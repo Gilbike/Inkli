@@ -1,4 +1,5 @@
 import Container from "@/Components/Container";
+import Like from "@/Components/Like";
 import Sidebar from "@/Components/Sidebar";
 import Layout from "@/Layouts/Layout";
 import React from "react";
@@ -38,30 +39,35 @@ export default function Show({ story, author, likes, dislikes, zen }) {
                             {author.name}
                         </a>
                     </p>
-                    <p className="text-outlineColor text-sm">
+                    {/* <p className="text-outlineColor text-sm">
                         The story was liked by {likes} people and disliked by{" "}
                         {dislikes}
-                    </p>
-                    {!zen ? (
-                        <a
-                            href={route("stories.show", {
-                                story: story.id,
-                                zen: "true",
-                            })}
-                            className="bg-lightP/70 dark:bg-darkP/70 p-1 rounded w-fit text-sm mt-3"
-                        >
-                            Enable reading mode
-                        </a>
-                    ) : (
-                        <a
-                            href={route("stories.show", {
-                                story: story.id,
-                            })}
-                        >
-                            Disable reading mode
-                        </a>
-                    )}
+                    </p> */}
+                    <div className="flex flex-row gap-2 items-center">
+                        <Like id={story.id} likeCount={story.likeCount} />
+                        {!zen ? (
+                            <a
+                                href={route("stories.show", {
+                                    story: story.id,
+                                    zen: "true",
+                                })}
+                                className="block bg-lightP dark:bg-darkP text-white px-2 py-1 rounded w-fit text-sm"
+                            >
+                                Enable reading mode
+                            </a>
+                        ) : (
+                            <a
+                                href={route("stories.show", {
+                                    story: story.id,
+                                })}
+                                className="block"
+                            >
+                                Disable reading mode
+                            </a>
+                        )}
+                    </div>
                 </div>
+                <hr className="border-outlineColor" />
                 <ReactMarkdown
                     disallowedElements={["h4", "h5", "h6", "a"]}
                     className="w-full story-markdown"
