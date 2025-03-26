@@ -14,6 +14,7 @@ class Story extends Model
   {
     return $this->belongsTo(User::class, "author");
   }
+
   public function likes()
   {
     return $this->hasMany(Like::class, 'story_id');

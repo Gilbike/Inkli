@@ -94,9 +94,15 @@ class StoryController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Story $story)
+  public function show(Request $request, Story $story)
   {
-    return inertia('Stories/Show', ['story' => $story]);
+    $author = $story->author()->first(['id', 'name']);
+    $likes = $story->likes()->where('is_liked', '=', '1')->count();
+    $dislikes = $story->likes()->where('is_liked', '=', '0')->count();
+
+    $zenMode = $request->get('zen') == "true";
+
+    return inertia('Stories/Show', ['story' => $story, 'author' => $author, 'likes' => $likes, 'dislikes' => $dislikes, 'zen' => $zenMode]);
   }
 
   /**
