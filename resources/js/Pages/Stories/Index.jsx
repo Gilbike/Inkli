@@ -13,6 +13,7 @@ export default function Index({ stories }) {
                     <FilterRow />
                     {stories.map((story) => (
                         <Story
+                            key={story.id}
                             id={story.id}
                             title={story.title}
                             summary={story.content}

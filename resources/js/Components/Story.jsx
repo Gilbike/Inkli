@@ -17,8 +17,10 @@ export default function Story({ id, title, summary, likeCount }) {
         fetch(route("likes.getLike", { id }))
             .then((response) => response.json())
             .then((data) => {
+                if (data.like == null) {
+                    return;
+                }
                 setRated(data.like.is_liked === 1);
-                console.log(data);
             })
             .catch((error) => console.error(error));
     }, []);
@@ -46,8 +48,8 @@ export default function Story({ id, title, summary, likeCount }) {
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
-                    setCurrentLikeCount(data.likeCount);
-                    setRated(true);
+                    setCurrentLikeCount(likeCount + data.change);
+                    setRated(data.change == 1);
                 } else {
                     console.error(data.message);
                 }
