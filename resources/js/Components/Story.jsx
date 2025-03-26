@@ -21,11 +21,15 @@ export default function Story({ id, title, summary, likeCount }) {
         return () => clearTimeout(timer);
     }, [shared]);
 
+    const markdownCharactersRegex = /\#|\*|\[|\]|\(|\)|\>|\-/g;
+
     return (
         <div className="p-4 rounded-lg dark:bg-dark1 bg-light1 flex flex-col gap-2">
             <a href={route("stories.show", { story: id })}>
                 <h2 className="font-medium text-2xl line-clamp-1">{title}</h2>
-                <p className="font-[Playfair] line-clamp-2">{summary}</p>
+                <p className="font-[Playfair] line-clamp-2">
+                    {summary.replaceAll(markdownCharactersRegex, "")}
+                </p>
             </a>
             <div className="flex flex-row gap-2">
                 <Like id={id} likeCount={likeCount} />
