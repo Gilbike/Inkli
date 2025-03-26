@@ -5,3 +5,44 @@
 #app {
     @apply flex flex-col min-h-screen;
 }
+
+.story-markdown p {
+    @apply font-['Playfair'] text-lg leading-snug;
+}
+.story-markdown h1 {
+    @apply font-bold text-4xl mb-1 mt-5;
+}
+.story-markdown h2 {
+    @apply font-bold text-3xl mb-1 mt-5;
+}
+.story-markdown h3 {
+    @apply font-bold text-2xl mb-1 mt-5;
+}
+.story-markdown h4,
+.story-markdown h5,
+.story-markdown h6,
+.story-markdown a {
+    @apply hidden;
+}
+.story-markdown hr {
+    @apply my-3 border-outlineColor;
+}
+.story-markdown ul {
+    @apply list-disc list-inside my-2;
+}
+.story-markdown ol {
+    @apply list-decimal list-inside my-2;
+}
+.story-markdown blockquote {
+    @apply border-l-4 border-l-light3 dark:border-l-dark3;
+    @apply pl-4 mb-2;
+}
+.story-markdown blockquote p {
+    quotes: "“" "”";
+}
+.story-markdown blockquote p::before {
+    content: open-quote;
+}
+.story-markdown blockquote p::after {
+    content: close-quote;
+}

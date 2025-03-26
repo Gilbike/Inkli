@@ -10,7 +10,10 @@ export default function Show({ story }) {
                 <Sidebar />
                 <div className="flex flex-col gap-3 mt-3 mx-auto w-4/12">
                     <h1 className="font-bold text-4xl mt-4">{story.title}</h1>
-                    <ReactMarkdown className="w-full prose dark:prose-invert lg:prose-xl">
+                    <ReactMarkdown
+                        disallowedElements={["h4", "h5", "h6", "a"]}
+                        className="w-full story-markdown"
+                    >
                         {story.content}
                     </ReactMarkdown>
                 </div>

@@ -140,7 +140,10 @@ export default function MarkdownEditor() {
                         <h3 className="font-bold text-xl m-3">
                             This is how your story will look like:
                         </h3>
-                        <ReactMarkdown className="w-full prose dark:prose-invert lg:prose-xl mt-5 p-3 rounded-lg dark:bg-dark3 bg-light3">
+                        <ReactMarkdown
+                            disallowedElements={["h4", "h5", "h6", "a"]}
+                            className="w-full story-markdown mt-5 p-3 rounded-lg dark:bg-dark3 bg-light3"
+                        >
                             {markdownText}
                         </ReactMarkdown>
                     </div>
