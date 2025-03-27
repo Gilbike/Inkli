@@ -4,13 +4,13 @@ import Story from "@/Components/Story";
 import Layout from "@/Layouts/Layout";
 import React from "react";
 
-export default function Index({ stories }) {
+export default function Index({ stories, genres }) {
     return (
         <Layout title="Stories">
             <main className="flex-1 flex flex-row items-stretch">
                 <Sidebar />
                 <div className="flex flex-col gap-3 mt-3 mx-auto w-4/12">
-                    <FilterRow />
+                    <FilterRow genres={genres} />
                     {stories.map((story) => (
                         <Story
                             key={story.id}

@@ -17,7 +17,10 @@ class StoryController extends Controller
    */
   public function index(Request $request)
   {
+    $genres = Genre::all(['id', 'name']);
+
     $sort = $request->get('sort', 'newest');
+    $genre = $request->get('genre');
     $stories = Story::with([
       'genre' => function ($query) {
         $query->select('id', 'name');
@@ -34,8 +37,11 @@ class StoryController extends Controller
         $stories = $stories->orderByDesc('created_at');
         break;
     }
+    if ($genre != null) {
+      $stories = $stories->where('genre', '=', $genre);
+    }
     $stories = $stories->get();
-    return inertia('Stories/Index', ['stories' => $stories]);
+    return inertia('Stories/Index', ['stories' => $stories, 'genres' => $genres]);
   }
 
   /**
