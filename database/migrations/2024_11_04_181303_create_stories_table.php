@@ -18,6 +18,7 @@ return new class extends Migration {
       $table->boolean('highlighted')->default(false);
       $table->foreignId('author')->constrained('users')->cascadeOnDelete();
       $table->integer('likeCount')->default(0);
+      $table->foreignId('genre')->constrained('genres')->cascadeOnDelete();
       $table->timestamps();
     });
   }

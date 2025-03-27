@@ -20,6 +20,11 @@ class Story extends Model
     return $this->hasMany(Like::class, 'story_id');
   }
 
+  public function genre()
+  {
+    return $this->belongsTo(Genre::class);
+  }
+
   protected $fillable = ['title', 'content', 'author', 'slug'];
 }
 
