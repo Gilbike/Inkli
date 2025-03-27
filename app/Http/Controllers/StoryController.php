@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use App\Models\Story;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Like;
@@ -17,17 +18,23 @@ class StoryController extends Controller
   public function index(Request $request)
   {
     $sort = $request->get('sort', 'newest');
+    $stories = Story::with([
+      'genre' => function ($query) {
+        $query->select('id', 'name');
+      }
+    ]);
     switch ($sort) {
       case 'abc':
-        $stories = Story::orderBy('title')->get();
+        $stories = $stories->orderBy('title');
         break;
       case 'like':
-        $stories = Story::orderByDesc('likeCount')->get();
+        $stories = $stories->orderByDesc('likeCount');
         break;
       default:
-        $stories = Story::orderByDesc('created_at')->get();
+        $stories = $stories->orderByDesc('created_at');
         break;
     }
+    $stories = $stories->get();
     return inertia('Stories/Index', ['stories' => $stories]);
   }
 
@@ -36,7 +43,8 @@ class StoryController extends Controller
    */
   public function create()
   {
-    return inertia("Stories/Create");
+    $genres = Genre::all();
+    return inertia("Stories/Create", ['genres' => $genres]);
   }
 
   public function like($id)
@@ -85,6 +93,7 @@ class StoryController extends Controller
     $validatedData = $request->validate([
       'title' => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
       'content' => 'required|string|min:200', // Minimum 200 karakter
+      'genre' => 'required|numeric|exists:genres,id'
     ]);
     $validatedData['author'] = auth()->id(); // Bejelentkezett felhasználó azonosítója
     $validatedData['slug'] = Str::slug($validatedData['title']); // Slug létrehozása

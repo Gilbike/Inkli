@@ -6,19 +6,18 @@ import { useForm } from "@inertiajs/react";
 import FormInput from "./FormInput";
 import axios from "axios";
 
-export default function MarkdownEditor() {
+export default function MarkdownEditor({ genres }) {
     const [title, setTitle] = useState("");
     const [markdownText, setMarkdownText] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [genres, setGenres] = useState([]);
-    const [selectedGenres, setSelectedGenres] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState();
     const [showDropdown, setShowDropdown] = useState(false);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
         content: "",
-        genres: [],
+        genre: -1,
     });
 
     const handleTitleChange = (e) => {
@@ -32,24 +31,14 @@ export default function MarkdownEditor() {
     };
 
     const handleGenreSelect = (genre) => {
-        if (!selectedGenres.includes(genre)) {
-            const updatedGenres = [...selectedGenres, genre];
-            setSelectedGenres(updatedGenres);
-            setData(
-                "genres",
-                updatedGenres.map((g) => g.id)
-            );
-        }
+        setSelectedGenre(genre);
+        setData("genre", genre.id);
         setShowDropdown(false);
     };
 
-    const handleGenreRemove = (genre) => {
-        const updatedGenres = selectedGenres.filter((g) => g.id !== genre.id);
-        setSelectedGenres(updatedGenres);
-        setData(
-            "genres",
-            updatedGenres.map((g) => g.id)
-        );
+    const handleGenreRemove = () => {
+        setSelectedGenre(null);
+        setData("genre", -1);
     };
 
     const handleSubmit = (e) => {
@@ -97,18 +86,18 @@ export default function MarkdownEditor() {
                         type="button"
                         onClick={() => setShowDropdown(!showDropdown)}
                     >
-                        Add Genres
+                        Add Genre
                     </Button>
-                    {selectedGenres.map((genre) => (
+                    {selectedGenre != null && (
                         <Button
-                            key={genre.id}
+                            key={selectedGenre.id}
                             type="button"
                             className="bg-blue-500 text-white px-3 py-1 rounded-full"
-                            onClick={() => handleGenreRemove(genre)}
+                            onClick={() => handleGenreRemove()}
                         >
-                            {genre.name} &times;
+                            {selectedGenre.name} &times;
                         </Button>
-                    ))}
+                    )}
                 </div>
                 {showDropdown && (
                     <div className="relative">
