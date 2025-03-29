@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Genre extends Model
 {
   use HasFactory;
+
+  public function stories()
+  {
+    return $this->hasMany(Story::class);
+  }
+  protected $fillable = ['name'];
 }
