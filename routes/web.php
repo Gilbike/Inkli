@@ -3,6 +3,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\GenreController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,14 +14,21 @@ Route::get('/', function () {
 
 Route::inertia("/aboutus", "Aboutus");
 
+
 Route::middleware('auth')->group(function () {
   Route::resource('stories', StoryController::class);
   Route::get("/my-stories", [ProfileController::class, 'stories'])->name('user-stories');
 
+
+
   Route::resource('likes', LikeController::class);
+
 
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
+
+  Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
+  Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
 
 
   Route::post('/stories/{id}/like', [LikeController::class, 'store'])->name('likes.store');
