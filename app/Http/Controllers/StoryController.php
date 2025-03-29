@@ -19,8 +19,8 @@ class StoryController extends Controller
   {
     $genres = Genre::all(['id', 'name']);
 
-    $sort = $request->get('sort', 'newest');
-    $genre = $request->get('genre');
+    $sort    = $request->get('sort', 'newest');
+    $genre   = $request->get('genre');
     $stories = Story::with([
       'genre' => function ($query) {
         $query->select('id', 'name');
@@ -56,7 +56,7 @@ class StoryController extends Controller
   public function like($id)
   {
     $story = Story::findOrFail($id);
-    $user = Auth::user();
+    $user  = Auth::user();
     if ($story->likes()->where('user_id', $user->id)->exists()) {
       return redirect()->back()->with('error', 'You already liked this story.');
     }
@@ -64,7 +64,7 @@ class StoryController extends Controller
       $story->increment('likecount');
       Like::create([
         'story_id' => $story->id,
-        'user_id' => $user->id,
+        'user_id'  => $user->id,
         'is_liked' => true,
       ]);
     });
@@ -75,7 +75,7 @@ class StoryController extends Controller
   public function dislike($id)
   {
     $story = Story::findOrFail($id);
-    $user = Auth::user();
+    $user  = Auth::user();
     if ($story->likes()->where('user_id', $user->id)->exists()) {
       return redirect()->back()->with('error', 'Már értékelted ezt a sztorit.');
     }
@@ -83,7 +83,7 @@ class StoryController extends Controller
       $story->decrement('likecount');
       Like::create([
         'story_id' => $story->id,
-        'user_id' => $user->id,
+        'user_id'  => $user->id,
         'is_liked' => false,
       ]);
     });
@@ -96,13 +96,13 @@ class StoryController extends Controller
   public function store(Request $request)
   {
     // Adatok validálása
-    $validatedData = $request->validate([
-      'title' => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
+    $validatedData           = $request->validate([
+      'title'   => 'required|string|min:3|unique:stories,title', // Minimum 3 karakter, egyedi cím
       'content' => 'required|string|min:200', // Minimum 200 karakter
-      'genre' => 'required|numeric|exists:genres,id'
+      'genre'   => 'required|numeric|exists:genres,id'
     ]);
     $validatedData['author'] = auth()->id(); // Bejelentkezett felhasználó azonosítója
-    $validatedData['slug'] = Str::slug($validatedData['title']); // Slug létrehozása
+    $validatedData['slug']   = Str::slug($validatedData['title']); // Slug létrehozása
     Story::create($validatedData); // Történet létrehozása
     return redirect()->back()->with(['message' => 'Történet sikeresen létrehozva']);
   }
@@ -111,8 +111,8 @@ class StoryController extends Controller
    */
   public function show(Request $request, Story $story)
   {
-    $author = $story->author()->first(['id', 'name']);
-    $likes = $story->likes()->where('is_liked', '=', '1')->count();
+    $author   = $story->author()->first(['id', 'name']);
+    $likes    = $story->likes()->where('is_liked', '=', '1')->count();
     $dislikes = $story->likes()->where('is_liked', '=', '0')->count();
 
     $zenMode = $request->get('zen') == "true";
