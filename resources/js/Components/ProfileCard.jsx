@@ -2,7 +2,7 @@ import React from "react";
 import DefaultCard from "./DefaultCard";
 import Button from "./Button";
 
-export default function ProfileCard({ name, pfp, wrote, subm, acc }) {
+export default function ProfileCard({ name, pfp, wrote, self }) {
     return (
         <DefaultCard className="mt-2">
             <div className="flex">
@@ -16,13 +16,22 @@ export default function ProfileCard({ name, pfp, wrote, subm, acc }) {
                         <h1 className="block text-5xl font-bold">{name}</h1>
                         <p className="text-sm block">
                             <b>{wrote}</b> stories written <br />
-                            <b>{subm}</b> continues submitted <br />
-                            <b>{acc}</b> continues accepted <br />
                         </p>
                     </div>
-                    <div className="flex flex-col w-28">
-                        <Button>Follow</Button>
-                    </div>
+                    {self ? (
+                        <div className="flex flex-col w-28">
+                            <a
+                                className="bg-lightP rounded px-2 py-1 text-center"
+                                href={route("profile.edit")}
+                            >
+                                Edit
+                            </a>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col w-28">
+                            <Button>Follow</Button>
+                        </div>
+                    )}
                 </div>
             </div>
         </DefaultCard>

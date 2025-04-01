@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -12,7 +13,7 @@ class ProfileController extends Controller
    */
   public function show(Request $request)
   {
-    $user    = auth()->user();
+    $user = auth()->user();
     $stories = $user->stories()->get();
 
     return inertia("Profile", ["stories" => $stories]);
@@ -21,9 +22,9 @@ class ProfileController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Request $request)
   {
-    //
+    return inertia("Profile/Edit");
   }
 
   /**
@@ -37,14 +38,21 @@ class ProfileController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Request $request)
   {
-    //
+    $user = auth()->user();
+    $user->delete();
+
+    Auth::guard('web')->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect("/")->with("success", "");
   }
 
   public function stories()
   {
-    $user    = auth()->user();
+    $user = auth()->user();
     $stories = $user->stories()->get();
 
     return inertia("Stories/MyStories", ["stories" => $stories]);

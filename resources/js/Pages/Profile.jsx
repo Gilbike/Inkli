@@ -1,14 +1,13 @@
 import Container from "@/Components/Container";
 import Layout from "@/Layouts/Layout";
 import React from "react";
-import DefaultCard from "@/Components/DefaultCard";
-import Badge from "@/Components/Badge";
 import ProfileCard from "@/Components/ProfileCard";
 import Story from "@/Components/Story";
 import { usePage } from "@inertiajs/react";
 
 export default function Profile({ user, stories }) {
     const userData = user || usePage().props.auth.user;
+    const localUser = userData.id === usePage().props.auth.user.id;
 
     return (
         <Layout>
@@ -16,9 +15,8 @@ export default function Profile({ user, stories }) {
                 <ProfileCard
                     pfp={userData.profilepicture}
                     name={userData.name}
-                    subm={0}
-                    acc={0}
                     wrote={stories.length}
+                    self={localUser}
                 />
                 <h1 className="font-bold text-[36px]">Stories</h1>
                 <div className="flex flex-col gap-2 mb-3">
