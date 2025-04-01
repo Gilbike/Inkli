@@ -10,14 +10,15 @@ import { FaUser } from "react-icons/fa";
 export default function Edit() {
     const user = usePage().props.auth.user;
 
-    const { data, setData, put, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm({
         name: user.name,
+        profilepicture: null,
     });
 
     const submit = (e) => {
         e.preventDefault();
 
-        put(route("profile.update"));
+        post(route("profile.update"));
     };
 
     return (
@@ -26,7 +27,7 @@ export default function Edit() {
                 <h1 className="font-bold text-[36px]">Manage your account</h1>
                 <DefaultCard className="mb-3">
                     <h2 className="font-medium text-[24px]">Edit profile</h2>
-                    <form onSubmit={submit}>
+                    <form onSubmit={submit} encType="multipart/form-data">
                         <FormInput
                             htmlName={"username"}
                             icon={<FaUser />}
@@ -36,6 +37,16 @@ export default function Edit() {
                             value={data.name}
                             onChange={(e) => setData("name", e.target.value)}
                             required
+                        />
+
+                        <input
+                            onChange={(e) =>
+                                setData("profilepicture", e.target.files[0])
+                            }
+                            type="file"
+                            name="profilepicture"
+                            id="profilepicture"
+                            className="block"
                         />
 
                         <Button className="mt-3">Update Profile</Button>

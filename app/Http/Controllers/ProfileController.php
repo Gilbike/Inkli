@@ -33,11 +33,16 @@ class ProfileController extends Controller
   public function update(Request $request)
   {
     $validated = $request->validate([
-      "name" => "required|string|max:25",
+      "name" => "required",
+      "profilepicture" => "required"
     ]);
+
+    $image = "data:image/jpg;base64," . base64_encode(file_get_contents($request->file('profilepicture')->path()));
 
     $user = auth()->user();
     $user->name = $validated["name"];
+    $user->profilepicture = $image;
+
     $user->save();
 
     return back()->with("success", "");
