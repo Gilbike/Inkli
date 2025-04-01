@@ -30,9 +30,17 @@ class ProfileController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request)
   {
-    //
+    $validated = $request->validate([
+      "name" => "required|string|max:25",
+    ]);
+
+    $user = auth()->user();
+    $user->name = $validated["name"];
+    $user->save();
+
+    return back()->with("success", "");
   }
 
   /**

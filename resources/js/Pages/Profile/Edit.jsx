@@ -1,16 +1,46 @@
+import Button from "@/Components/Button";
 import Container from "@/Components/Container";
 import DefaultCard from "@/Components/DefaultCard";
+import FormInput from "@/Components/FormInput";
 import Layout from "@/Layouts/Layout";
-import { usePage } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
+import { FaUser } from "react-icons/fa";
 
 export default function Edit() {
     const user = usePage().props.auth.user;
 
+    const { data, setData, put, processing, errors, reset } = useForm({
+        name: user.name,
+    });
+
+    const submit = (e) => {
+        e.preventDefault();
+
+        put(route("profile.update"));
+    };
+
     return (
         <Layout>
             <Container>
-                <h1 className="font-bold text-[36px]">Edit your profile</h1>
+                <h1 className="font-bold text-[36px]">Manage your account</h1>
+                <DefaultCard className="mb-3">
+                    <h2 className="font-medium text-[24px]">Edit profile</h2>
+                    <form onSubmit={submit}>
+                        <FormInput
+                            htmlName={"username"}
+                            icon={<FaUser />}
+                            label="Display name"
+                            className="focus:outline-none border-0 shadow-none"
+                            placeholder="Display name"
+                            value={data.name}
+                            onChange={(e) => setData("name", e.target.value)}
+                            required
+                        />
+
+                        <Button className="mt-3">Update Profile</Button>
+                    </form>
+                </DefaultCard>
                 <DefaultCard>
                     <h2 className="font-medium text-[24px]">
                         Account deletion

@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
   Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
   Route::get("/profile/edit", [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::put("/profile/edit", [ProfileController::class, 'update'])->name('profile.update');
   Route::get("/profile/delete", [ProfileController::class, 'destroy'])->name('profile.delete');
 
   Route::get("/search", [SearchController::class, 'search'])->name('search');
