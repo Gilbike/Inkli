@@ -12,24 +12,24 @@ export default function Profile({ user, stories, badges }) {
 
     const badgeNames = {
         stry: {
-            brnz: "Storyteller",
-            slvr: "Story Crafter",
-            gld: "Narrative Virtuoso",
+            brnz: "Storyteller Ł img/book1.png",
+            slvr: "Story Crafter Ł img/book2.png",
+            gld: "Narrative Virtuoso Ł img/book3.png",
         },
         like: {
-            brnz: "Supporter",
-            slvr: "Community Cheerleader",
-            gld: "Like Master",
+            brnz: "Supporter Ł img/like1.png",
+            slvr: "Community Cheerleader Ł img/like2.png",
+            gld: "Like Master Ł img/like3.png",
         },
         join: {
-            brnz: "Newcomer",
-            slvr: "Community Pillar",
-            gld: "Founding Star",
+            brnz: "Newcomer Ł img/time1.png",
+            slvr: "Community Pillar Ł img/time2.png",
+            gld: "Founding Star Ł img/time3.png",
         },
         rgst: {
-            brnz: "Milestone Member",
-            slvr: "Founding Member",
-            gld: "Pioneer",
+            brnz: "Milestone Member Ł img/og3.png",
+            slvr: "Founding Member Ł img/og2.png",
+            gld: "Pioneer Ł img/og1.png",
         },
     };
 
@@ -46,27 +46,39 @@ export default function Profile({ user, stories, badges }) {
                     <h1 className="font-bold text-[36px]">Badges</h1>
                     <div className="flex flex-row gap-1">
                         {badges["stry"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex flex-col gap-2 px-2 py-4 w-1/4 text-center">
-                                {/* kep */}
-                                <p>{badgeNames.stry[badges["stry"]]}</p>
+                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                                <img
+                                    className="rounded"
+                                    src={badgeNames.stry[badges["join"]].split(" Ł ")[1]}
+                                />
+                                <p>{badgeNames.stry[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["like"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex flex-col gap-2 px-2 py-4 w-1/4 text-center">
-                                {/* kep */}
-                                <p>{badgeNames.like[badges["like"]]}</p>
+                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                                <img
+                                    className="rounded"
+                                    src={badgeNames.like[badges["join"]].split(" Ł ")[1]}
+                                />
+                                <p>{badgeNames.like[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["join"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex flex-col gap-2 px-2 py-4 w-1/4 text-center">
-                                {/* kep */}
-                                <p>{badgeNames.join[badges["join"]]}</p>
+                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                                <img
+                                    className="rounded"
+                                    src={badgeNames.join[badges["join"]].split(" Ł ")[1]}
+                                />
+                                <p>{badgeNames.join[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["rgst"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex flex-col gap-2 px-2 py-4 w-1/4 text-center">
-                                {/* kep */}
-                                <p>{badgeNames.rgst[badges["rgst"]]}</p>
+                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                                <img
+                                    className="rounded"
+                                    src={badgeNames.rgst[badges["join"]].split(" Ł ")[1]}
+                                />
+                                <p>{badgeNames.rgst[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                     </div>
