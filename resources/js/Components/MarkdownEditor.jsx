@@ -4,14 +4,15 @@ import DefaultCard from "./DefaultCard";
 import Button from "./Button";
 import { useForm } from "@inertiajs/react";
 import FormInput from "./FormInput";
-import Dropdown from "./Dropdown";
+import axios from "axios";
 
 export default function MarkdownEditor({ genres }) {
     const [title, setTitle] = useState("");
     const [markdownText, setMarkdownText] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [selectedGenre, setSelectedGenre] = useState("");
+    const [selectedGenre, setSelectedGenre] = useState();
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         title: "",
@@ -32,6 +33,12 @@ export default function MarkdownEditor({ genres }) {
     const handleGenreSelect = (genre) => {
         setSelectedGenre(genre);
         setData("genre", genre.id);
+        setShowDropdown(false);
+    };
+
+    const handleGenreRemove = () => {
+        setSelectedGenre(null);
+        setData("genre", -1);
     };
 
     const handleSubmit = (e) => {
@@ -49,7 +56,7 @@ export default function MarkdownEditor({ genres }) {
                 reset();
                 setTitle("");
                 setMarkdownText("");
-                setSelectedGenre("");
+                setSelectedGenres([]);
             },
         });
     };
@@ -75,31 +82,38 @@ export default function MarkdownEditor({ genres }) {
                     required
                 />
                 <div className="flex items-center space-x-3 mt-3">
-                    <Dropdown
-                        className="dark:bg-darkP bg-lightP text-white hover:bg-lightH dark:hover:bg-darkH active:bg-lightA dark:active:bg-darkA ${size} rounded-lg ${className}"
-                        content={
-                            selectedGenre ? selectedGenre.name : "Add Genre"
-                        }
-                        menu={
-                            <div className="flex flex-col gap-2 p-2 dark:bg-dark2 bg-light2 rounded-b-lg">
-                                <ul className="absolute bg-white border rounded shadow-md mt-2 w-48">
-                                    {genres.map((genre) => (
-                                        <li
-                                            key={genre.id}
-                                            className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                                            onClick={() =>
-                                                handleGenreSelect(genre)
-                                            }
-                                        >
-                                            {genre.name}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        }
-                    />
+                    <Button
+                        type="button"
+                        onClick={() => setShowDropdown(!showDropdown)}
+                    >
+                        Add Genre
+                    </Button>
+                    {selectedGenre != null && (
+                        <Button
+                            key={selectedGenre.id}
+                            type="button"
+                            className="bg-blue-500 text-white px-3 py-1 rounded-full"
+                            onClick={() => handleGenreRemove()}
+                        >
+                            {selectedGenre.name} &times;
+                        </Button>
+                    )}
                 </div>
-
+                {showDropdown && (
+                    <div className="relative">
+                        <ul className="absolute bg-white border rounded shadow-md mt-2 w-48">
+                            {genres.map((genre) => (
+                                <li
+                                    key={genre.id}
+                                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                                    onClick={() => handleGenreSelect(genre)}
+                                >
+                                    {genre.name}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
                 <textarea
                     className="w-full h-40 mt-3 p-2 rounded-lg dark:bg-dark2 bg-light2 dark:text-white text-gray-800 focus:outline-none border-0 shadow-none"
                     value={markdownText}
