@@ -12,24 +12,24 @@ export default function Profile({ user, stories, badges }) {
 
     const badgeNames = {
         stry: {
-            brnz: "Storyteller Ł img/book1.png",
-            slvr: "Story Crafter Ł img/book2.png",
-            gld: "Narrative Virtuoso Ł img/book3.png",
+            brnz: "Storyteller Ł /img/book1.png",
+            slvr: "Story Crafter Ł /img/book2.png",
+            gld: "Narrative Virtuoso Ł /img/book3.png",
         },
         like: {
-            brnz: "Supporter Ł img/like1.png",
-            slvr: "Community Cheerleader Ł img/like2.png",
-            gld: "Like Master Ł img/like3.png",
+            brnz: "Supporter Ł /img/like1.png",
+            slvr: "Community Cheerleader Ł /img/like2.png",
+            gld: "Like Master Ł /img/like3.png",
         },
         join: {
-            brnz: "Newcomer Ł img/time1.png",
-            slvr: "Community Pillar Ł img/time2.png",
-            gld: "Founding Star Ł img/time3.png",
+            brnz: "Newcomer Ł /img/time1.png",
+            slvr: "Community Pillar Ł /img/time2.png",
+            gld: "Founding Star Ł /img/time3.png",
         },
         rgst: {
-            brnz: "Milestone Member Ł img/og3.png",
-            slvr: "Founding Member Ł img/og2.png",
-            gld: "Pioneer Ł img/og1.png",
+            brnz: "Milestone Member Ł /img/og3.png",
+            slvr: "Founding Member Ł /img/og2.png",
+            gld: "Pioneer Ł /img/og1.png",
         },
     };
 
