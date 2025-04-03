@@ -46,36 +46,36 @@ export default function Profile({ user, stories, badges }) {
                     <h1 className="font-bold text-[36px]">Badges</h1>
                     <div className="flex flex-row gap-1">
                         {badges["stry"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                            <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded"
+                                    className="rounded w-9"
                                     src={badgeNames.stry[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.stry[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["like"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                            <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded"
+                                    className="rounded w-9"
                                     src={badgeNames.like[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.like[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["join"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                            <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded"
+                                    className="rounded w-9"
                                     src={badgeNames.join[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.join[badges["join"]].split(" Ł ")[0]}</p>
                             </div>
                         )}
                         {badges["rgst"] != null && (
-                            <div className="bg-light2 dark:bg-dark2 rounded flex align-content: space-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
+                            <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded"
+                                    className="rounded w-9"
                                     src={badgeNames.rgst[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.rgst[badges["join"]].split(" Ł ")[0]}</p>
