@@ -48,7 +48,7 @@ export default function Profile({ user, stories, badges }) {
                         {badges["stry"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded w-9"
+                                    className="rounded w-24"
                                     src={badgeNames.stry[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.stry[badges["join"]].split(" Ł ")[0]}</p>
@@ -57,7 +57,7 @@ export default function Profile({ user, stories, badges }) {
                         {badges["like"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded w-9"
+                                    className="rounded w-24"
                                     src={badgeNames.like[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.like[badges["join"]].split(" Ł ")[0]}</p>
@@ -66,7 +66,7 @@ export default function Profile({ user, stories, badges }) {
                         {badges["join"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded w-9"
+                                    className="rounded w-24"
                                     src={badgeNames.join[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.join[badges["join"]].split(" Ł ")[0]}</p>
@@ -75,7 +75,7 @@ export default function Profile({ user, stories, badges }) {
                         {badges["rgst"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
-                                    className="rounded w-9"
+                                    className="rounded w-24"
                                     src={badgeNames.rgst[badges["join"]].split(" Ł ")[1]}
                                 />
                                 <p>{badgeNames.rgst[badges["join"]].split(" Ł ")[0]}</p>
