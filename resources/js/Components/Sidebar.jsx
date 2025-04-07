@@ -1,8 +1,10 @@
 import React from "react";
 import Dropdown from "./Dropdown";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
 export default function Sidebar() {
+    const users = usePage().props.auth.followedUsers;
+
     return (
         <div className="w-2/12 dark:bg-dark1 bg-light1 border-r border-r-outlineColor p-3 flex flex-col gap-3">
             <Link
@@ -22,7 +24,14 @@ export default function Sidebar() {
                 menu={
                     <div className="flex flex-col gap-2 p-2 dark:bg-dark2 bg-light2 rounded-b-lg">
                         <p>Genres</p>
-                        <p>Users</p>
+                        <div>
+                            <p className="italic">Users</p>
+                            {users.map((x) => (
+                                <a href={route("user", { user: x.id })}>
+                                    {x.name}
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 }
             />
