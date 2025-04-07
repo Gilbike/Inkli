@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -117,6 +118,10 @@ class ProfileController extends Controller
   {
     $stories = $user->stories()->get();
     $likes = $user->likes()->count();
+    $followed = DB::table("follows")
+      ->where("who", "=", auth()->user()->id)
+      ->where("whom", "=", $user->id)
+      ->count("*") > 0;
 
     $badges = [
       "stry" => null,
@@ -159,6 +164,27 @@ class ProfileController extends Controller
       $badges["rgst"] = "brnz";
     }
 
-    return inertia("Profile", ["user" => $user, "stories" => $stories, "badges" => $badges]);
+    return inertia("Profile", ["user" => $user, "stories" => $stories, "badges" => $badges, "followed" => $followed]);
+  }
+
+  public function follow(Request $request, User $user)
+  {
+    DB::beginTransaction();
+    DB::table("follows")->insert(["who" => auth()->user()->id, "whom" => $user->id]);
+    DB::commit();
+
+    return back()->with("success", "");
+  }
+
+  public function unfollow(Request $request, User $user)
+  {
+    DB::beginTransaction();
+    DB::table("follows")
+      ->where("who", "=", auth()->user()->id)
+      ->where("whom", "=", $user->id)
+      ->delete();
+    DB::commit();
+
+    return back()->with("success", "");
   }
 }

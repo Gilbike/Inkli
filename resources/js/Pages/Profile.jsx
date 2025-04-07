@@ -6,7 +6,7 @@ import Story from "@/Components/Story";
 import { usePage } from "@inertiajs/react";
 import DefaultCard from "@/Components/DefaultCard";
 
-export default function Profile({ user, stories, badges }) {
+export default function Profile({ user, stories, badges, followed }) {
     const userData = user || usePage().props.auth.user;
     const localUser = userData.id === usePage().props.auth.user.id;
 
@@ -37,10 +37,12 @@ export default function Profile({ user, stories, badges }) {
         <Layout>
             <Container>
                 <ProfileCard
+                    id={userData.id}
                     pfp={userData.profilepicture}
                     name={userData.name}
                     wrote={stories.length}
                     self={localUser}
+                    followed={followed}
                 />
                 <DefaultCard className="mt-3">
                     <h1 className="font-bold text-[36px]">Badges</h1>
@@ -49,36 +51,76 @@ export default function Profile({ user, stories, badges }) {
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
                                     className="rounded w-24"
-                                    src={badgeNames.stry[badges["join"]].split(" Ł ")[1]}
+                                    src={
+                                        badgeNames.stry[badges["join"]].split(
+                                            " Ł "
+                                        )[1]
+                                    }
                                 />
-                                <p>{badgeNames.stry[badges["join"]].split(" Ł ")[0]}</p>
+                                <p>
+                                    {
+                                        badgeNames.stry[badges["join"]].split(
+                                            " Ł "
+                                        )[0]
+                                    }
+                                </p>
                             </div>
                         )}
                         {badges["like"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
                                     className="rounded w-24"
-                                    src={badgeNames.like[badges["join"]].split(" Ł ")[1]}
+                                    src={
+                                        badgeNames.like[badges["join"]].split(
+                                            " Ł "
+                                        )[1]
+                                    }
                                 />
-                                <p>{badgeNames.like[badges["join"]].split(" Ł ")[0]}</p>
+                                <p>
+                                    {
+                                        badgeNames.like[badges["join"]].split(
+                                            " Ł "
+                                        )[0]
+                                    }
+                                </p>
                             </div>
                         )}
                         {badges["join"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
                                     className="rounded w-24"
-                                    src={badgeNames.join[badges["join"]].split(" Ł ")[1]}
+                                    src={
+                                        badgeNames.join[badges["join"]].split(
+                                            " Ł "
+                                        )[1]
+                                    }
                                 />
-                                <p>{badgeNames.join[badges["join"]].split(" Ł ")[0]}</p>
+                                <p>
+                                    {
+                                        badgeNames.join[badges["join"]].split(
+                                            " Ł "
+                                        )[0]
+                                    }
+                                </p>
                             </div>
                         )}
                         {badges["rgst"] != null && (
                             <div className="bg-light2 dark:bg-dark2 rounded flex items-center justify-between flex-col gap-2 px-2 py-4 w-1/4 text-center">
                                 <img
                                     className="rounded w-24"
-                                    src={badgeNames.rgst[badges["join"]].split(" Ł ")[1]}
+                                    src={
+                                        badgeNames.rgst[badges["join"]].split(
+                                            " Ł "
+                                        )[1]
+                                    }
                                 />
-                                <p>{badgeNames.rgst[badges["join"]].split(" Ł ")[0]}</p>
+                                <p>
+                                    {
+                                        badgeNames.rgst[badges["join"]].split(
+                                            " Ł "
+                                        )[0]
+                                    }
+                                </p>
                             </div>
                         )}
                     </div>

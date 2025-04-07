@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
   Route::get("/search", [SearchController::class, 'search'])->name('search');
 
   Route::get("/user/{user}", [ProfileController::class, 'other'])->name('user');
+  Route::post("/user/{user}/follow", [ProfileController::class, 'follow'])->name('user.follow');
+  Route::post("/user/{user}/unfollow", [ProfileController::class, 'unfollow'])->name('user.unfollow');
 });
 
 require __DIR__ . '/auth.php';

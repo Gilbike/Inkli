@@ -1,8 +1,19 @@
 import React from "react";
 import DefaultCard from "./DefaultCard";
 import Button from "./Button";
+import { useForm } from "@inertiajs/react";
 
-export default function ProfileCard({ name, pfp, wrote, self }) {
+export default function ProfileCard({ id, name, pfp, wrote, self, followed }) {
+    const { post } = useForm({});
+
+    const followUser = () => {
+        post(route("user.follow", { user: id }));
+    };
+
+    const unfollowUser = () => {
+        post(route("user.unfollow", { user: id }));
+    };
+
     return (
         <DefaultCard className="mt-2">
             <div className="flex">
@@ -29,7 +40,15 @@ export default function ProfileCard({ name, pfp, wrote, self }) {
                         </div>
                     ) : (
                         <div className="flex flex-col w-28">
-                            <Button>Follow</Button>
+                            {followed ? (
+                                <form onSubmit={unfollowUser}>
+                                    <Button>Unfollow</Button>
+                                </form>
+                            ) : (
+                                <form onSubmit={followUser}>
+                                    <Button>Follow</Button>
+                                </form>
+                            )}
                         </div>
                     )}
                 </div>

@@ -4,7 +4,6 @@ import DefaultCard from "./DefaultCard";
 import Button from "./Button";
 import { useForm } from "@inertiajs/react";
 import FormInput from "./FormInput";
-import axios from "axios";
 
 export default function MarkdownEditor({ genres }) {
     const [title, setTitle] = useState("");
