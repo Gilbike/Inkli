@@ -7,7 +7,7 @@ import React from "react";
 export default function Index({ genres }) {
     return (
         <Layout title="Create Story">
-            <main className="flex-1 flex flex-row items-stretch">
+            <main className="flex-1 flex flex-col md:flex-row items-stretch">
                 <Sidebar />
 
                 <Container>

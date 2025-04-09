@@ -6,7 +6,7 @@ export default function Sidebar() {
     const users = usePage().props.auth.followedUsers;
 
     return (
-        <div className="w-2/12 dark:bg-dark1 bg-light1 border-r border-r-outlineColor p-3 flex flex-col gap-3">
+        <div className="w-full md:w-4/12 lg:w-2/12 dark:bg-dark1 bg-light1 border-r border-r-outlineColor p-3 flex flex-col gap-3">
             <Link
                 href="/stories"
                 className="w-full rounded-lg dark:bg-dark2 bg-light2 px-3 py-2"
