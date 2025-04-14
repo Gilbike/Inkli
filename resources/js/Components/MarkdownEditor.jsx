@@ -100,11 +100,11 @@ export default function MarkdownEditor({ genres }) {
                 </div>
                 {showDropdown && (
                     <div className="relative">
-                        <ul className="absolute bg-white border rounded shadow-md mt-2 w-48">
+                        <ul className="absolute bg-light2 dark:bg-dark2 rounded shadow-md mt-2 w-48 overflow-hidden">
                             {genres.map((genre) => (
                                 <li
                                     key={genre.id}
-                                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+                                    className="px-4 py-2 hover:bg-light2-h hover:dark:bg-dark2-h cursor-pointer"
                                     onClick={() => handleGenreSelect(genre)}
                                 >
                                     {genre.name}
