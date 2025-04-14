@@ -13,6 +13,7 @@ Route::get('/', function () {
 })->name('landing');
 
 Route::inertia("/aboutus", "Aboutus");
+Route::inertia("/privacy-policy", "Policy");
 
 
 Route::middleware('auth')->group(function () {

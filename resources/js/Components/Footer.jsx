@@ -8,7 +8,7 @@ function Footer() {
                 About Us
             </Link>
             <span>•</span>
-            <Link to="/privacy-policy" className="hover:underline">
+            <Link href="/privacy-policy" className="hover:underline">
                 Privacy Policy
             </Link>
             <span>•</span>
