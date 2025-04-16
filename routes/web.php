@@ -24,9 +24,9 @@ Route::middleware('auth')->group(function () {
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
 
-  Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
-  Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
   Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
+  Route::post('/genres/{genre}/follow', [GenreController::class, 'follow'])->name('genres.follow');
+  Route::post('/genres/{genre}/unfollow', [GenreController::class, 'unfollow'])->name('genres.unfollow');
 
   Route::get("/profile", [ProfileController::class, 'show'])->name('profile');
   Route::get("/profile/edit", [ProfileController::class, 'edit'])->name('profile.edit');

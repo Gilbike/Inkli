@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'follows', 'who', 'whom');
     }
+
+    public function followingGenres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_follows', 'who', 'which');
+    }
 }

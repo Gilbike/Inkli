@@ -2,43 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Models\Genre;
 
 class GenreController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   */
-  public function index()
-  {
-    $genres = Genre::all();
-    return response()->json($genres);
-  }
-
   public function show(Genre $genre)
   {
     $stories = $genre->stories()->get();
-    return inertia("Genres/Show", ["stories" => $stories, "genre" => $genre->name]);
+    $followed = DB::table("genre_follows")
+      ->where("who", "=", auth()->user()->id)
+      ->where("which", "=", $genre->id)
+      ->count("*") > 0;
+
+    return inertia("Genres/Show", ["stories" => $stories, "followed" => $followed, "genre" => $genre]);
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
+  public function follow(Request $request, Genre $genre)
   {
-    return inertia('Genres/Create');
+    DB::beginTransaction();
+    DB::table("genre_follows")->insert(["who" => auth()->user()->id, "which" => $genre->id]);
+    DB::commit();
+
+    return back()->with("success", "");
   }
 
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(Request $request)
+  public function unfollow(Request $request, Genre $genre)
   {
-    $validatedData = $request->validate([
-      'name' => 'required|string|max:255',
-    ]);
-    Genre::create($validatedData);
-    return redirect()->back()->with(['message' => 'Genre created successfully']);
+    DB::beginTransaction();
+    DB::table("genre_follows")
+      ->where("who", "=", auth()->user()->id)
+      ->where("which", "=", $genre->id)
+      ->delete();
+    DB::commit();
+
+    return back()->with("success", "");
   }
 }
