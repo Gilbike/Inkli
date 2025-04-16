@@ -14,11 +14,12 @@ export default function Sidebar() {
             >
                 Stories
             </Link>
-            <Dropdown
-                className="w-full"
-                content={<Link href="/highlights">Highlights</Link>}
-                menu={<div></div>}
-            />
+            <Link
+                className="w-full rounded-lg dark:bg-dark2 bg-light2 px-3 py-2"
+                href="/highlights"
+            >
+                Highlights
+            </Link>
             <Dropdown
                 className="w-full"
                 content={<p>Following</p>}

@@ -129,6 +129,13 @@ class StoryController extends Controller
     return inertia('Stories/Show', ['story' => $story, 'author' => $author, 'likes' => $likes, 'dislikes' => $dislikes, 'zen' => $zenMode]);
   }
 
+  public function showHighlighted(Request $request)
+  {
+    $stories = Story::where("highlighted", "=", 1)->get();
+
+    return inertia("Stories/Highlighted", ["stories" => $stories]);
+  }
+
   public function toggleHighlight(Request $request, Story $story)
   {
     $story->highlighted = !$story->highlighted;
