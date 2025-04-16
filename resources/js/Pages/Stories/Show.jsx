@@ -2,12 +2,18 @@ import Container from "@/Components/Container";
 import Like from "@/Components/Like";
 import Sidebar from "@/Components/Sidebar";
 import Layout from "@/Layouts/Layout";
-import { usePage } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Show({ story, author, likes, dislikes, zen }) {
     const isUserAdmin = usePage().props.auth.user.admin == 1;
+
+    const { post } = useForm({});
+
+    const toggleHighlight = () => {
+        post(route("stories.highlight", { story: story.id }));
+    };
 
     const StoryLayout = ({ children }) => {
         if (zen) {
@@ -70,24 +76,19 @@ export default function Show({ story, author, likes, dislikes, zen }) {
                         )}
                         {isUserAdmin ? (
                             !story.highlighted ? (
-                                <a
-                                    href={route("stories.show", {
-                                        story: story.id,
-                                        zen: "true",
-                                    })}
+                                <form
+                                    onSubmit={toggleHighlight}
                                     className="block bg-lightP dark:bg-darkP text-white px-2 py-1 rounded w-fit text-sm"
                                 >
-                                    Highlight story
-                                </a>
+                                    <button>Highlight story</button>
+                                </form>
                             ) : (
-                                <a
-                                    href={route("stories.show", {
-                                        story: story.id,
-                                    })}
+                                <form
+                                    onSubmit={toggleHighlight}
                                     className="block"
                                 >
-                                    Remove story highlight
-                                </a>
+                                    <button>Remove story highlight</button>
+                                </form>
                             )
                         ) : null}
                     </div>

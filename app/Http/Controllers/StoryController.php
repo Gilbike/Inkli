@@ -129,6 +129,14 @@ class StoryController extends Controller
     return inertia('Stories/Show', ['story' => $story, 'author' => $author, 'likes' => $likes, 'dislikes' => $dislikes, 'zen' => $zenMode]);
   }
 
+  public function toggleHighlight(Request $request, Story $story)
+  {
+    $story->highlighted = !$story->highlighted;
+    $story->save();
+
+    return redirect()->back()->with("success", "");
+  }
+
   /**
    * Show the form for editing the specified resource.
    */

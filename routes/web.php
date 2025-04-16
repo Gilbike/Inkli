@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/stories/{story}/like', [StoryController::class, 'getLike'])->name('likes.getLike');
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
+  Route::post('/stories/{story}/highlight-toggle', [StoryController::class, 'toggleHighlight'])->middleware("admin")->name('stories.highlight');
 
   Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
   Route::post('/genres/{genre}/follow', [GenreController::class, 'follow'])->name('genres.follow');
