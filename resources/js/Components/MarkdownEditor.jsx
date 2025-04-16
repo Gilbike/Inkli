@@ -120,6 +120,12 @@ export default function MarkdownEditor({ genres }) {
                     placeholder="Write your story in Markdown..."
                     required
                 />
+                <a
+                    className="text-xs underline text-outlineColor"
+                    href="/markdown"
+                >
+                    What is markdown?
+                </a>
                 <div className="text-sm text-gray-500 mt-1 mx-3">
                     {markdownText.length}/200 characters (minimum)
                 </div>
