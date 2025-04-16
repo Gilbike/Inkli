@@ -54,6 +54,14 @@ class StoryController extends Controller
     return inertia("Stories/Create", ['genres' => $genres]);
   }
 
+  public function getLike($id)
+  {
+    $userId = Auth::id();
+    $like = Like::where('user_id', $userId)->where('story_id', $id)->first();
+
+    return response()->json(['like' => $like]);
+  }
+
   public function like($id)
   {
     $story = Story::findOrFail($id);

@@ -14,12 +14,14 @@ Route::get('/', function () {
 
 Route::inertia("/aboutus", "Aboutus");
 Route::inertia("/privacy-policy", "Policy");
+Route::inertia("/markdown", "Markdown");
 
 
 Route::middleware('auth')->group(function () {
   Route::resource('stories', StoryController::class);
   Route::get("/my-stories", [ProfileController::class, 'stories'])->name('user-stories');
 
+  Route::get('/stories/{story}/like', [StoryController::class, 'getLike'])->name('likes.getLike');
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
 
