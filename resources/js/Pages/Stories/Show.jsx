@@ -2,10 +2,13 @@ import Container from "@/Components/Container";
 import Like from "@/Components/Like";
 import Sidebar from "@/Components/Sidebar";
 import Layout from "@/Layouts/Layout";
+import { usePage } from "@inertiajs/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Show({ story, author, likes, dislikes, zen }) {
+    const isUserAdmin = usePage().props.auth.user.admin == 1;
+
     const StoryLayout = ({ children }) => {
         if (zen) {
             return <Container>{children}</Container>;
@@ -65,6 +68,28 @@ export default function Show({ story, author, likes, dislikes, zen }) {
                                 Disable reading mode
                             </a>
                         )}
+                        {isUserAdmin ? (
+                            !story.highlighted ? (
+                                <a
+                                    href={route("stories.show", {
+                                        story: story.id,
+                                        zen: "true",
+                                    })}
+                                    className="block bg-lightP dark:bg-darkP text-white px-2 py-1 rounded w-fit text-sm"
+                                >
+                                    Highlight story
+                                </a>
+                            ) : (
+                                <a
+                                    href={route("stories.show", {
+                                        story: story.id,
+                                    })}
+                                    className="block"
+                                >
+                                    Remove story highlight
+                                </a>
+                            )
+                        ) : null}
                     </div>
                 </div>
                 <hr className="border-outlineColor" />
