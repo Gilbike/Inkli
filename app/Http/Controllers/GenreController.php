@@ -16,6 +16,12 @@ class GenreController extends Controller
     return response()->json($genres);
   }
 
+  public function show(Genre $genre)
+  {
+    $stories = $genre->stories()->get();
+    return inertia("Genres/Show", ["stories" => $stories, "genre" => $genre->name]);
+  }
+
   /**
    * Show the form for creating a new resource.
    */

@@ -30,9 +30,12 @@ export default function Story({ id, title, summary, likeCount, genre }) {
                     <h2 className="font-medium text-2xl line-clamp-1">
                         {title}
                     </h2>
-                    <div className="rounded bg-lightP dark:bg-darkP px-2 text-white">
-                        {genre}
-                    </div>
+                    <a
+                        href={route("genres.show", { genre: genre })}
+                        className="rounded bg-lightP dark:bg-darkP px-2 text-white"
+                    >
+                        {genre.name}
+                    </a>
                 </div>
                 <p className="font-[Playfair] line-clamp-2">
                     {summary.replaceAll(markdownCharactersRegex, "")}
