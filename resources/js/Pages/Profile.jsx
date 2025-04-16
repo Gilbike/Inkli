@@ -40,6 +40,7 @@ export default function Profile({ user, stories, badges, followed }) {
                     id={userData.id}
                     pfp={userData.profilepicture}
                     name={userData.name}
+                    admin={userData.admin == 1}
                     wrote={stories.length}
                     self={localUser}
                     followed={followed}

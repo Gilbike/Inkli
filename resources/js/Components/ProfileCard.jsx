@@ -3,7 +3,15 @@ import DefaultCard from "./DefaultCard";
 import Button from "./Button";
 import { useForm } from "@inertiajs/react";
 
-export default function ProfileCard({ id, name, pfp, wrote, self, followed }) {
+export default function ProfileCard({
+    id,
+    name,
+    admin,
+    pfp,
+    wrote,
+    self,
+    followed,
+}) {
     const { post } = useForm({});
 
     const followUser = () => {
@@ -24,7 +32,14 @@ export default function ProfileCard({ id, name, pfp, wrote, self, followed }) {
                 />
                 <div className="flex flex-col md:flex-row justify-between w-full m-2 lg:ml-7">
                     <div className="flex flex-col justify-between h-full">
-                        <h1 className="block text-5xl font-bold">{name}</h1>
+                        <h1 className="flex flex-col lg:flex-row justify-start gap-3 text-5xl font-bold">
+                            {name}{" "}
+                            {admin && (
+                                <span className="text-xs text-red-400">
+                                    Administrator
+                                </span>
+                            )}
+                        </h1>
                         <p className="text-sm block">
                             <b>{wrote}</b> stories written <br />
                         </p>
