@@ -5,7 +5,7 @@ import { IoInvertMode } from "react-icons/io5";
 import Input from "./Input";
 import { MdAdminPanelSettings } from "react-icons/md";
 
-function Header({ onDarkModeClick }) {
+export default function Header({ onDarkModeClick }) {
     const { auth } = usePage().props;
     // auth.user = null;
 
@@ -132,5 +132,3 @@ function Header({ onDarkModeClick }) {
         </nav>
     );
 }
-
-export default Header;
