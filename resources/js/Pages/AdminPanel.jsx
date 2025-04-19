@@ -6,7 +6,7 @@ import Layout from "@/Layouts/Layout";
 import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function AdminPanel({ users, genres }) {
+export default function AdminPanel({ users, genres, success }) {
     const currentUser = usePage().props.auth.user;
 
     const formSubmitter = useForm({});
@@ -36,6 +36,11 @@ export default function AdminPanel({ users, genres }) {
     return (
         <Layout>
             <Container>
+                {success ? (
+                    <div className="bg-green-100 text-green-800 p-3 rounded my-4">
+                        Action perfomed successfully
+                    </div>
+                ) : null}
                 <DefaultCard title="Manage Users" className="mt-3">
                     <div className="overflow-auto h-96 w-full flex flex-col gap-2">
                         {users.map((x) => (

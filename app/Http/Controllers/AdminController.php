@@ -8,11 +8,13 @@ use \App\Models\Genre;
 
 class AdminController extends Controller
 {
-    function show()
+    function show(Request $request)
     {
+        $success = $request->session()->has("success");
+
         $users = User::all();
         $genres = Genre::all();
 
-        return inertia("AdminPanel", ["users" => $users, "genres" => $genres]);
+        return inertia("AdminPanel", ["users" => $users, "genres" => $genres, "success" => $success]);
     }
 }
