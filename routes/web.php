@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
   Route::get('/stories/{story}/like', [StoryController::class, 'getLike'])->name('likes.getLike');
   Route::post('/stories/{story}/like', [StoryController::class, 'like'])->name('stories.like');
   Route::post('/stories/{story}/dislike', [StoryController::class, 'dislike'])->name('stories.dislike');
-  Route::post('/stories/{story}/highlight-toggle', [StoryController::class, 'toggleHighlight'])->middleware("admin")->name('stories.highlight');
 
   Route::get('/genres/{genre}', [GenreController::class, 'show'])->name('genres.show');
   Route::post('/genres/{genre}/follow', [GenreController::class, 'follow'])->name('genres.follow');
@@ -43,6 +42,15 @@ Route::middleware('auth')->group(function () {
   Route::post("/user/{user}/unfollow", [ProfileController::class, 'unfollow'])->name('user.unfollow');
 });
 
-Route::get("/adminpanel", [AdminController::class, "show"])->middleware(["auth", "admin"])->name("admin.panel");
+// Admin routes
+Route::middleware(["auth", "admin"])->group(function () {
+  Route::get("/adminpanel", [AdminController::class, "show"])->name("admin.panel");
+
+  Route::delete("/user/{user}/ban", [ProfileController::class, "deleteByAdmin"])->name("user.ban");
+  Route::put("/user/{user}/grant", [ProfileController::class, "grantAdmin"])->name("user.admin.grant");
+  Route::put("/user/{user}/remove", [ProfileController::class, "removeAdmin"])->name("user.admin.remove");
+
+  Route::post('/stories/{story}/highlight-toggle', [StoryController::class, 'toggleHighlight'])->middleware("admin")->name('stories.highlight');
+});
 
 require __DIR__ . '/auth.php';
