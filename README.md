@@ -2,6 +2,11 @@
 
 ---
 
+## Csoport tagjai
+
+-   Dienes Kristóf ([DijensesKrit4oof](https://github.com/DijensesKrit4oof))
+-   Dikácz Márton ([Gilbike](https://github.com/Gilbike))
+
 ## Az Inkliről röviden
 
 Az Inkli egy közösségi történet megosztó oldal. Rövid, vagy akár hosszabb történeteket oszthatnak meg a felhasználók egymással, legyen az valós vagy kitalált. A közösség tagjai szabadon böngészhetnek a történetek között, előre meghatározott kategóriák mentén – például romantikus, sci-fi, humor vagy bármi más. Emellett lehetőségük van más felhasználókat követni, így mindig naprakészek lehetnek kedvenc íróik legújabb történeteivel kapcsolatban. A legjobb történeteket a szerkesztők kiemeltté nyilváníthatják, hogy több emberhez elérjen.
