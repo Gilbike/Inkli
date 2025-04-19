@@ -54,6 +54,7 @@ Route::middleware(["auth", "admin"])->group(function () {
   Route::delete("/genres/{genre}/delete", [GenreController::class, "destroy"])->name("genres.delete");
 
   Route::post('/stories/{story}/highlight-toggle', [StoryController::class, 'toggleHighlight'])->middleware("admin")->name('stories.highlight');
+  Route::delete('/stories/{story}/remove', [StoryController::class, 'destroy'])->name('stories.delete');
 });
 
 require __DIR__ . '/auth.php';

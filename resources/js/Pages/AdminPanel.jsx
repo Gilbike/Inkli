@@ -6,7 +6,7 @@ import Layout from "@/Layouts/Layout";
 import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function AdminPanel({ users, genres, success }) {
+export default function AdminPanel({ users, genres, stories, success }) {
     const currentUser = usePage().props.auth.user;
 
     const formSubmitter = useForm({});
@@ -23,6 +23,10 @@ export default function AdminPanel({ users, genres, success }) {
 
     const deleteGenre = (id) => {
         formSubmitter.delete(route("genres.delete", { genre: id }));
+    }
+
+    const deleteStory = (id) => {
+        formSubmitter.delete(route("stories.delete", { story: id }));
     }
 
     const { post, setData, data } = useForm({
@@ -121,6 +125,25 @@ export default function AdminPanel({ users, genres, success }) {
                         <FormInput label="Name" htmlName="name" value={data.name} onChange={(e) => setData("name", e.target.value)} />
                         <Button className="mt-2">Create Genre</Button>
                     </form>
+                </DefaultCard>
+
+                <DefaultCard title="Manage Stories" className="my-3">
+                    <div className="overflow-auto h-96 w-full flex flex-col gap-2">
+                        {stories.map((x) => (
+                            <div className="bg-light2 dark:bg-dark2 rounded px-3 py-2 flex flex-row justify-between items-center">
+                                <a href={route("stories.show", { story: x.id })}>
+                                    {x.title}
+                                </a>
+                                <div className="flex flex-row gap-1">
+                                    <form onSubmit={() => deleteStory(x.id)}>
+                                        <button className="text-white bg-secondaryP hover:bg-secondaryH px-2 py-1 rounded">
+                                            Delete Story
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </DefaultCard>
             </Container>
         </Layout>
