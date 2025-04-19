@@ -3,6 +3,7 @@ import { Link, usePage } from "@inertiajs/react";
 import { IoMdAdd, IoMdNotifications, IoMdSearch } from "react-icons/io";
 import { IoInvertMode } from "react-icons/io5";
 import Input from "./Input";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 function Header({ onDarkModeClick }) {
     const { auth } = usePage().props;
@@ -57,6 +58,14 @@ function Header({ onDarkModeClick }) {
                             <span className="lg:block hidden">Create</span>
                             <IoMdAdd size={24} />
                         </Link>
+                        {auth.user.admin && (
+                            <Link
+                                href="/adminpanel"
+                                className="flex flex-row gap-3 items-center p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
+                            >
+                                <MdAdminPanelSettings size={24} />
+                            </Link>
+                        )}
                         <div className="relative">
                             <button
                                 className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h flex flex-row gap-3"

@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoryController;
@@ -17,7 +18,7 @@ Route::inertia("/privacy-policy", "Policy");
 Route::inertia("/markdown", "Markdown");
 
 Route::middleware('auth')->group(function () {
-  Route::resource('stories', StoryController::class);
+  Route::resource('stories', StoryController::class)->only(["index", "create", "store", "show"]);
   Route::get("/my-stories", [ProfileController::class, 'stories'])->name('user-stories');
   Route::get("/highlights", [StoryController::class, 'showHighlighted']);
 
@@ -41,5 +42,7 @@ Route::middleware('auth')->group(function () {
   Route::post("/user/{user}/follow", [ProfileController::class, 'follow'])->name('user.follow');
   Route::post("/user/{user}/unfollow", [ProfileController::class, 'unfollow'])->name('user.unfollow');
 });
+
+Route::get("/adminpanel", [AdminController::class, "show"])->middleware(["auth", "admin"])->name("admin.panel");
 
 require __DIR__ . '/auth.php';
