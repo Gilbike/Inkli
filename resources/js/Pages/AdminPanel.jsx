@@ -1,10 +1,12 @@
+import Button from "@/Components/Button";
 import Container from "@/Components/Container";
 import DefaultCard from "@/Components/DefaultCard";
+import FormInput from "@/Components/FormInput";
 import Layout from "@/Layouts/Layout";
 import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
 
-export default function AdminPanel({ users }) {
+export default function AdminPanel({ users, genres }) {
     const currentUser = usePage().props.auth.user;
 
     const formSubmitter = useForm({});
@@ -17,6 +19,18 @@ export default function AdminPanel({ users }) {
     }
     const removeAdminFromUser = (id) => {
         formSubmitter.put(route("user.admin.remove", { user: id }));
+    }
+
+    const deleteGenre = (id) => {
+        formSubmitter.delete(route("genres.delete", { genre: id }));
+    }
+
+    const { post, setData, data } = useForm({
+        name: ""
+    });
+
+    const createGenre = () => {
+        post(route("genres.store"));
     }
 
     return (
@@ -78,6 +92,30 @@ export default function AdminPanel({ users }) {
                             </>
                         ) : null
                     }
+                </DefaultCard>
+
+                <DefaultCard title="Manage Genres" className="mt-3">
+                    <div className="overflow-auto h-96 w-full flex flex-col gap-2">
+                        {genres.map((x) => (
+                            <div className="bg-light2 dark:bg-dark2 rounded px-3 py-2 flex flex-row justify-between items-center">
+                                <a href={route("genres.show", { genre: x.id })}>
+                                    {x.name}
+                                </a>
+                                <div className="flex flex-row gap-1">
+                                    <form onSubmit={() => deleteGenre(x.id)}>
+                                        <button className="text-white bg-secondaryP hover:bg-secondaryH px-2 py-1 rounded">
+                                            Delete Genre
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <h3 className="font-medium text-2xl my-2">Create new genre</h3>
+                    <form onSubmit={createGenre}>
+                        <FormInput label="Name" htmlName="name" value={data.name} onChange={(e) => setData("name", e.target.value)} />
+                        <Button className="mt-2">Create Genre</Button>
+                    </form>
                 </DefaultCard>
             </Container>
         </Layout>

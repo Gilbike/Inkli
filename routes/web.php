@@ -50,6 +50,9 @@ Route::middleware(["auth", "admin"])->group(function () {
   Route::put("/user/{user}/grant", [ProfileController::class, "grantAdmin"])->name("user.admin.grant");
   Route::put("/user/{user}/remove", [ProfileController::class, "removeAdmin"])->name("user.admin.remove");
 
+  Route::post("/genres/create", [GenreController::class, "store"])->name("genres.store");
+  Route::delete("/genres/{genre}/delete", [GenreController::class, "destroy"])->name("genres.delete");
+
   Route::post('/stories/{story}/highlight-toggle', [StoryController::class, 'toggleHighlight'])->middleware("admin")->name('stories.highlight');
 });
 
