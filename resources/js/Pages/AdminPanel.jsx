@@ -45,6 +45,20 @@ export default function AdminPanel({ users, genres, stories, success }) {
                         Action perfomed successfully
                     </div>
                 ) : null}
+                <DefaultCard className="flex flex-row justify-around">
+                    <div className="flex flex-col items-center">
+                        <p className="font-medium">Users</p>
+                        <p>{users.length}</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <p className="font-medium">Genres</p>
+                        <p>{genres.length}</p>
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <p className="font-medium">Stories</p>
+                        <p>{stories.length}</p>
+                    </div>
+                </DefaultCard>
                 <DefaultCard title="Manage Users" className="mt-3">
                     <div className="overflow-auto h-96 w-full flex flex-col gap-2">
                         {users.map((x) => (
