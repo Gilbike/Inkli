@@ -32,7 +32,7 @@ export default function ProfileCard({ id, name, pfp, wrote, self, followed }) {
                     {self ? (
                         <div className="flex flex-col w-28">
                             <a
-                                className="bg-lightP rounded px-2 py-1 text-center"
+                                className="bg-lightP text-white rounded px-2 py-1 text-center"
                                 href={route("profile.edit")}
                             >
                                 Edit
