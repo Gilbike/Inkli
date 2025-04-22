@@ -15,6 +15,7 @@ export default function Highlighted({ stories }) {
                             title={story.title}
                             summary={story.content}
                             likeCount={story.likeCount}
+                            key={story.id}
                         ></Story>
                     ))}
                 </div>

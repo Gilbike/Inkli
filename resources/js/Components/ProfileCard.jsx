@@ -32,7 +32,7 @@ export default function ProfileCard({
                 />
                 <div className="flex flex-col md:flex-row justify-between w-full m-2 lg:ml-7">
                     <div className="flex flex-col justify-between h-full">
-                        <h1 className="flex flex-col lg:flex-row justify-start gap-3 text-5xl font-bold">
+                        <h1 className="flex flex-col lg:flex-row justify-start gap-3 text-xl md:text-5xl font-bold">
                             {name}{" "}
                             {admin && (
                                 <span className="text-xs text-red-400">

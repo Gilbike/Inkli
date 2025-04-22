@@ -15,6 +15,7 @@ export default function MyStories({ stories }) {
                             title={story.title}
                             summary={story.content}
                             likeCount={story.likeCount}
+                            key={story.id}
                         ></Story>
                     ))}
                 </div>

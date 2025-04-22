@@ -33,6 +33,7 @@ export default function FilterRow({ genres }) {
                             <a
                                 href={`?sort=${sortParam}&genre=${genre.id}`}
                                 className="shadow w-full text-left hover:dark:bg-dark2-h hover:bg-light2-h px-3 py-2"
+                                key={genre.id}
                             >
                                 {genre.name}
                             </a>
