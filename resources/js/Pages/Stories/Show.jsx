@@ -21,7 +21,7 @@ export default function Show({ story, author, likes, dislikes, zen }) {
         }
         return (
             <Layout title="Stories">
-                <main className="flex-1 flex flex-row items-stretch">
+                <main className="flex-1 flex flex-col md:flex-row items-stretch">
                     <Sidebar />
                     {children}
                     <div className="w-2/12"></div>
