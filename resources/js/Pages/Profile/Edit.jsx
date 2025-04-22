@@ -57,7 +57,7 @@ export default function Edit() {
                         Account deletion
                     </h2>
                     <a
-                        className="block mt-2 w-fit rounded px-3 py-2 bg-secondaryP"
+                        className="block text-white mt-2 w-fit rounded px-3 py-2 bg-secondaryP"
                         href={route("profile.delete")}
                     >
                         Delete account
