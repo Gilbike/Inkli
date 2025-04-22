@@ -106,6 +106,12 @@ class ProfileController extends Controller
     return redirect("/")->with("success", "");
   }
 
+  public function deleteByAdmin(Request $request, User $user)
+  {
+    $user->delete();
+    return redirect()->route("admin.panel")->with("success", "");
+  }
+
   public function stories()
   {
     $user = auth()->user();
@@ -185,6 +191,20 @@ class ProfileController extends Controller
       ->delete();
     DB::commit();
 
+    return back()->with("success", "");
+  }
+
+  public function grantAdmin(Request $request, User $user)
+  {
+    $user->admin = true;
+    $user->save();
+    return back()->with("success", "");
+  }
+
+  public function removeAdmin(Request $request, User $user)
+  {
+    $user->admin = false;
+    $user->save();
     return back()->with("success", "");
   }
 }

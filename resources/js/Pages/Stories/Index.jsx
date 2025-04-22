@@ -18,7 +18,7 @@ export default function Index({ stories, genres }) {
                             title={story.title}
                             summary={story.content}
                             likeCount={story.likeCount}
-                            genre={story.genre.name}
+                            genre={story.genre}
                         />
                     ))}
                 </div>

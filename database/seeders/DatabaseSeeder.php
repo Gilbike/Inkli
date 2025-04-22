@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->create([
+            "name" => "Inkli admin",
+            "email" => "admin@inkli.com",
+            "admin" => true,
+        ]);
+
         $genres = Genre::factory(6)->create();
 
         User::factory(10)

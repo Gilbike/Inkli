@@ -54,6 +54,14 @@ class StoryController extends Controller
     return inertia("Stories/Create", ['genres' => $genres]);
   }
 
+  public function getLike($id)
+  {
+    $userId = Auth::id();
+    $like = Like::where('user_id', $userId)->where('story_id', $id)->first();
+
+    return response()->json(['like' => $like]);
+  }
+
   public function like($id)
   {
     $story = Story::findOrFail($id);
@@ -121,6 +129,21 @@ class StoryController extends Controller
     return inertia('Stories/Show', ['story' => $story, 'author' => $author, 'likes' => $likes, 'dislikes' => $dislikes, 'zen' => $zenMode]);
   }
 
+  public function showHighlighted(Request $request)
+  {
+    $stories = Story::where("highlighted", "=", 1)->get();
+
+    return inertia("Stories/Highlighted", ["stories" => $stories]);
+  }
+
+  public function toggleHighlight(Request $request, Story $story)
+  {
+    $story->highlighted = !$story->highlighted;
+    $story->save();
+
+    return redirect()->back()->with("success", "");
+  }
+
   /**
    * Show the form for editing the specified resource.
    */
@@ -140,8 +163,9 @@ class StoryController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Story $story)
   {
-    //
+    $story->delete();
+    return redirect()->back()->with("success", "");
   }
 }

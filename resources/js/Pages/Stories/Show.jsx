@@ -2,10 +2,19 @@ import Container from "@/Components/Container";
 import Like from "@/Components/Like";
 import Sidebar from "@/Components/Sidebar";
 import Layout from "@/Layouts/Layout";
+import { useForm, usePage } from "@inertiajs/react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Show({ story, author, likes, dislikes, zen }) {
+    const isUserAdmin = usePage().props.auth.user.admin == 1;
+
+    const { post } = useForm({});
+
+    const toggleHighlight = () => {
+        post(route("stories.highlight", { story: story.id }));
+    };
+
     const StoryLayout = ({ children }) => {
         if (zen) {
             return <Container>{children}</Container>;
@@ -65,6 +74,23 @@ export default function Show({ story, author, likes, dislikes, zen }) {
                                 Disable reading mode
                             </a>
                         )}
+                        {isUserAdmin ? (
+                            !story.highlighted ? (
+                                <form
+                                    onSubmit={toggleHighlight}
+                                    className="block bg-lightP dark:bg-darkP text-white px-2 py-1 rounded w-fit text-sm"
+                                >
+                                    <button>Highlight story</button>
+                                </form>
+                            ) : (
+                                <form
+                                    onSubmit={toggleHighlight}
+                                    className="block"
+                                >
+                                    <button>Remove story highlight</button>
+                                </form>
+                            )
+                        ) : null}
                     </div>
                 </div>
                 <hr className="border-outlineColor" />

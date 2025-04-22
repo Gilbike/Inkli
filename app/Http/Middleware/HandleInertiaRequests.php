@@ -36,11 +36,17 @@ class HandleInertiaRequests extends Middleware
             $followedUsers = $request->user()->following()->get();
         }
 
+        $followedGenres = [];
+        if ($request->user()) {
+            $followedGenres = $request->user()->followingGenres()->get();
+        }
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
-                'followedUsers' => $followedUsers
+                'followedUsers' => $followedUsers,
+                'followedGenres' => $followedGenres
             ],
         ];
     }

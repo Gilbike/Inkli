@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class GenreFactory extends Factory
 {
+
+
     /**
      * Define the model's default state.
      *
@@ -16,8 +18,9 @@ class GenreFactory extends Factory
      */
     public function definition(): array
     {
+        $names = ["Sci-fi", "Romantic", "Action", "Kids", "Medieval", "Fantasy", "Real life"];
         return [
-            'name' => fake()->unique()->word()
+            'name' => fake()->unique()->randomElement($names)
         ];
     }
 }
