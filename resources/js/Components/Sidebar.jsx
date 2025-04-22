@@ -31,6 +31,7 @@ export default function Sidebar() {
                                 <a
                                     className="underline text-sm"
                                     href={route("genres.show", { genre: x.id })}
+                                    key={x.id}
                                 >
                                     {x.name}
                                 </a>
@@ -42,6 +43,7 @@ export default function Sidebar() {
                                 <a
                                     className="underline text-sm"
                                     href={route("user", { user: x.id })}
+                                    key={x.id}
                                 >
                                     {x.name}
                                 </a>
