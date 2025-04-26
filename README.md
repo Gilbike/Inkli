@@ -13,7 +13,7 @@ Az Inkli egy közösségi történet megosztó oldal. Rövid, vagy akár hosszab
 
 ## A repository tartalma
 
-Ez a repo tartalmazza az összes forrásfájlt a weboldalhoz. Továbbá a dokumentáció két fájlját és az adatbázis dump fájljait.
+Ez a repo tartalmazza az összes forrásfájlt a weboldalhoz és az asztali alkalmazáshoz. Továbbá a dokumentáció két fájlját és az adatbázis dump fájljait.
 
 ## A projekt dokumentációja
 
@@ -46,3 +46,9 @@ Minden dump fájl elérhető a `/database` mappában.
     >
     > - Email: admin@inkli.com
     > - Jelszó: password
+
+## Asztali alkalmazás
+
+Az asztali alkalmazás teljes forráskódja megtalálható a `/desktop` mappában
+
+> FONTOS! Az asztali alkalmazás megfelelő működéséhez szükséges a webes alkalmazás feltelepítése és szerver futtatása.
