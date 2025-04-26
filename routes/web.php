@@ -19,7 +19,7 @@ Route::inertia("/privacy-policy", "Policy");
 Route::inertia("/markdown", "Markdown");
 
 Route::get("/api/stories", function () {
-  return response()->json(Story::with(["author", "genre"])->get());
+  return response()->json(Story::with(["author", "genre"])->orderByDesc("created_at")->get());
 });
 
 Route::middleware('auth')->group(function () {

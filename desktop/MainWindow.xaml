@@ -34,6 +34,71 @@
             </Label>
         </Border>
 
-        
+        <ListView
+            Grid.Row="1"
+            Grid.Column="1"
+            ItemsSource="{Binding Stories}"
+            BorderThickness="0" 
+            BorderBrush="Transparent"
+            MouseDoubleClick="OnStoryDoubleClick">
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Margin="2"
+                        Padding="10"
+                        Background="#ededed"
+                        CornerRadius="5"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                        <StackPanel HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                <TextBlock 
+                                    Text="{Binding Title}" 
+                                    FontSize="18" 
+                                    FontWeight="Bold"
+                                    Margin="0,0,10,0"/>
+                                <Border
+                                    Background="#4a6727"
+                                    CornerRadius="4"
+                                    Padding="4,2"
+                                    VerticalAlignment="Center">
+                                    <TextBlock
+                                        Text="{Binding Genre.Name}" 
+                                        Foreground="White"
+                                        FontSize="12"
+                                        FontWeight="SemiBold"/>
+                                </Border>
+                            </StackPanel>
+
+                            <TextBlock 
+                                Text="{Binding ShortContent}" 
+                                Margin="0,5,0,0"
+                                TextWrapping="Wrap"
+                                Foreground="Gray"
+                                FontSize="14"
+                                MaxHeight="50"
+                                TextTrimming="CharacterEllipsis"/>
+
+                            <TextBlock 
+                                Text="{Binding FormattedAuthor}" 
+                                Margin="0,5,0,0"
+                                TextWrapping="Wrap"
+                                Foreground="Black"
+                                FontWeight="Light"
+                                FontSize="12"
+                                MaxHeight="50"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
     </Grid>
 </Window>

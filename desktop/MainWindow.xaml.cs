@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -22,11 +23,14 @@ namespace desktop
     public partial class MainWindow : Window
     {
         // IMPORTANT: HAS TO MATCH WITH WEBSITE ADDRESS
-        private static string API_ADDRESS = "http://localhost:8000/api/storiess";
+        private static string API_ADDRESS = "http://localhost:8000/api/stories";
+
+        public ObservableCollection<Story> Stories { get; set; } = new ObservableCollection<Story>();
 
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
 
             connectionErrorContainer.Visibility = Visibility.Collapsed;
 
@@ -44,6 +48,8 @@ namespace desktop
             }
 
             List<Story> stories = JsonConvert.DeserializeObject<List<Story>>(apiResponse);
+
+            stories.ForEach((story) => Stories.Add(story));
         }
 
         private async Task<string> ReadInkliAPI()
@@ -61,6 +67,15 @@ namespace desktop
             {
                 return null;
             }            
+        }
+
+        private void OnStoryDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var listView = sender as ListView;
+            if (listView.SelectedItem is Story selectedStory)
+            {
+                MessageBox.Show($"You double-clicked on: {selectedStory.Title}");
+            }
         }
     }
 }
