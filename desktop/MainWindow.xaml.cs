@@ -74,7 +74,9 @@ namespace desktop
             var listView = sender as ListView;
             if (listView.SelectedItem is Story selectedStory)
             {
-                MessageBox.Show($"You double-clicked on: {selectedStory.Title}");
+                var detailsWindow = new StoryReader(selectedStory);
+                detailsWindow.Owner = this;
+                detailsWindow.ShowDialog();
             }
         }
     }
