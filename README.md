@@ -52,3 +52,10 @@ Minden dump fájl elérhető a `/database` mappában.
 Az asztali alkalmazás teljes forráskódja megtalálható a `/desktop` mappában
 
 > FONTOS! Az asztali alkalmazás megfelelő működéséhez szükséges a webes alkalmazás feltelepítése és szerver futtatása.
+
+### Alkalmazás telepítése
+
+1. Telepítővel
+2. Hordozható változat
+    1. `/desktop-bin` mappában található `InkliDesktop.rar` fájlt csomagolja ki
+    2. Futtassa a `desktop.exe` fájlt
