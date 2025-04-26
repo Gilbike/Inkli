@@ -56,6 +56,9 @@ Az asztali alkalmazás teljes forráskódja megtalálható a `/desktop` mappába
 ### Alkalmazás telepítése
 
 1. Telepítővel
+    1. Futtassa a `/desktop-bin/inkli-setup.exe` fájlt
+    2. Kövesse a telepítőt
+    3. Futtassa telepítés után a program VAGY később Inkli Desktop néven megtalálja az alkalmazást a Start Menüben
 2. Hordozható változat
     1. `/desktop-bin` mappában található `InkliDesktop.rar` fájlt csomagolja ki
     2. Futtassa a `desktop.exe` fájlt
