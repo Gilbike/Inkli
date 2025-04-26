@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using desktop.models;
+using Newtonsoft.Json;
 
 namespace desktop
 {
@@ -20,11 +22,13 @@ namespace desktop
     public partial class MainWindow : Window
     {
         // IMPORTANT: HAS TO MATCH WITH WEBSITE ADDRESS
-        private static string API_ADDRESS = "http://localhost:8000/api/stories";
+        private static string API_ADDRESS = "http://localhost:8000/api/storiess";
 
         public MainWindow()
         {
             InitializeComponent();
+
+            connectionErrorContainer.Visibility = Visibility.Collapsed;
 
             LoadInkliStories();
         }
@@ -32,7 +36,14 @@ namespace desktop
         private async void LoadInkliStories()
         {
             string apiResponse = await ReadInkliAPI();
-            responseLabel.Content = apiResponse;
+
+            if (apiResponse == null)
+            {
+                connectionErrorContainer.Visibility = Visibility.Visible;
+                return;
+            }
+
+            List<Story> stories = JsonConvert.DeserializeObject<List<Story>>(apiResponse);
         }
 
         private async Task<string> ReadInkliAPI()
@@ -48,7 +59,7 @@ namespace desktop
             }
             catch (Exception ex)
             {
-                return "Could not connect to Inkli servers";
+                return null;
             }            
         }
     }

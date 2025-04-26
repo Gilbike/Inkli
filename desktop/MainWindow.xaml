@@ -8,6 +8,32 @@
         Title="Inkli - Desktop" Height="600" Width="1000"
         ResizeMode="CanResize">
     <Grid>
-        <Label x:Name="responseLabel"></Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            x:Name="connectionErrorContainer"
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Background="#5e3b4d"
+            CornerRadius="5">
+            <Label
+                Foreground="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+                Could not connect to Inkli servers
+            </Label>
+        </Border>
+
+        
     </Grid>
 </Window>
