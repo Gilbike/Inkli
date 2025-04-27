@@ -13,11 +13,18 @@ Az Inkli egy közösségi történet megosztó oldal. Rövid, vagy akár hosszab
 
 ## A repository tartalma
 
-Ez a repo tartalmazza az összes forrásfájlt a webes változathoz, illetve az asztali alkalmazáshoz (`/desktop` mappában található). A dokumentáció külön érhető el.
+Ez a repo tartalmazza az összes forrásfájlt a weboldalhoz és az asztali alkalmazáshoz. Továbbá a dokumentáció két fájlját és az adatbázis dump fájljait.
 
 ## A projekt dokumentációja
 
-A projekt dokumentációja Google Docs segítségével készült és megtalálható [itt](https://docs.google.com/document/d/1mJK8LLfQz52960EssFrz6Fwo4r1ARw49zKwNl0FzoqM).
+A projekt dokumentációja a `/documentation` mappában található. A felhasználói dokumentáció külön fájlban érhető el, de ugyanazon mappában.
+
+## Az adatbázis dump fájljai
+
+Minden dump fájl elérhető a `/database` mappában.
+
+-   Tesztadat mentes dump fájl: `/database/database-dump.sql`
+-   Tesztadattal feltöltött dump fájl: `/database/database-dump-seeded.sql`
 
 ## Telepítés
 
@@ -34,3 +41,24 @@ A projekt dokumentációja Google Docs segítségével készült és megtalálha
 7. Az adatbázis tábláinak létrehozásához futtassa a `php artisan migrate:fresh` parancsot
     > Amennyiben szeretné, hogy legyenek előre feltöltött teszt adatok, illetve admin felhasználó, tegye a parancs végére a `--seed` szót (`php artisan migrate:fresh --seed`)
 8. Indítsa el a Laravel projektet a `composer run dev` parancs segítségével
+9. A weboldal elérhető lesz a `https://localhost:8000/` URL-en
+    > Amennyiben az adatbázis létrehozásakor tesztadatokkal töltötte azt fel, akkor létrehozásra került egy adminisztrátor felhasználó. Ennek bejelentkezési adatai:
+    >
+    > - Email: admin@inkli.com
+    > - Jelszó: password
+
+## Asztali alkalmazás
+
+Az asztali alkalmazás teljes forráskódja megtalálható a `/desktop` mappában
+
+> FONTOS! Az asztali alkalmazás megfelelő működéséhez szükséges a webes alkalmazás feltelepítése és szerver futtatása.
+
+### Alkalmazás telepítése
+
+1. Telepítővel
+    1. Futtassa a `/desktop-bin/inkli-setup.exe` fájlt
+    2. Kövesse a telepítőt
+    3. Futtassa telepítés után a program VAGY később Inkli Desktop néven megtalálja az alkalmazást a Start Menüben
+2. Hordozható változat
+    1. `/desktop-bin` mappában található `InkliDesktop.rar` fájlt csomagolja ki
+    2. Futtassa a `desktop.exe` fájlt

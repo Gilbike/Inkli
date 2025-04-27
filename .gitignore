@@ -19,3 +19,7 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+
+/desktop/bin
+/desktop/obj
+/desktop/.vs

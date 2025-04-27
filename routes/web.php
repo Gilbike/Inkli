@@ -5,6 +5,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\GenreController;
+use App\Models\Story;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,6 +17,10 @@ Route::get('/', function () {
 Route::inertia("/aboutus", "Aboutus");
 Route::inertia("/privacy-policy", "Policy");
 Route::inertia("/markdown", "Markdown");
+
+Route::get("/api/stories", function () {
+  return response()->json(Story::with(["author", "genre"])->orderByDesc("created_at")->get());
+});
 
 Route::middleware('auth')->group(function () {
   Route::resource('stories', StoryController::class)->only(["index", "create", "store", "show"]);
