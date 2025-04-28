@@ -28,7 +28,7 @@ Minden dump fájl elérhető a `/database` mappában.
 
 ## Telepítés
 
-> Előfeltétel, hogy a számítógépen telepítve legyen a PHP, Composer illetve a Laravel.
+> Előfeltétel, hogy a számítógépen telepítve legyen a NodeJS, npm, PHP, Composer illetve a Laravel.
 
 > Az asztali alkalmazás futtatásához Windows operációs rendszer szükséges.
 
