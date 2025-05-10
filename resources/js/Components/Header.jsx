@@ -58,14 +58,14 @@ export default function Header({ onDarkModeClick }) {
                             <span className="lg:block hidden">Create</span>
                             <IoMdAdd size={24} />
                         </Link>
-                        {auth.user.admin && (
+                        {auth.user.admin ? (
                             <Link
                                 href="/adminpanel"
                                 className="flex flex-row gap-3 items-center p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h"
                             >
                                 <MdAdminPanelSettings size={24} />
                             </Link>
-                        )}
+                        ) : null}
                         <div className="relative">
                             <button
                                 className="p-2 rounded-md dark:bg-dark2 dark:hover:bg-dark2-h bg-light2 hover:bg-light2-h flex flex-row gap-3"
